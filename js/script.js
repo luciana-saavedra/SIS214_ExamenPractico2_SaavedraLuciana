@@ -98,63 +98,57 @@ if (botonMenu && menu) {
 // 3. FILTRO DE PROYECTOS
 // ========================================
 
-const filtro = document.getElementById("filtro-proyectos");
-const seccionProyectos = document.getElementById("proyectos");
-const mensajeFiltro = document.getElementById("resultado-filtro");
+/* ================================
+   FILTRO DE EXPERIENCIA
+================================ */
 
-if (filtro && seccionProyectos) {
-    const proyectos = Array.from(
-        seccionProyectos.querySelectorAll("article")
-    );
+const filtroProyectos = document.getElementById("filtro-proyectos");
+const resultadoFiltro = document.getElementById("resultado-filtro");
 
-    function filtrarProyectos() {
-        const consulta = filtro.value
+// Guardamos las tarjetas originales sin modificar su contenido.
+const tarjetasExperiencia = Array.from(
+    document.querySelectorAll("#experiencia article")
+).map((tarjeta) => ({
+    elemento: tarjeta,
+    texto: tarjeta.textContent.toLocaleLowerCase("es")
+}));
+
+if (filtroProyectos && resultadoFiltro) {
+    filtroProyectos.addEventListener("input", () => {
+        const busqueda = filtroProyectos.value
             .trim()
             .toLocaleLowerCase("es");
 
-        let cantidadVisibles = 0;
+        // Filtra las tarjetas que coinciden con el texto.
+        const coincidencias = tarjetasExperiencia.filter((tarjeta) =>
+            tarjeta.texto.includes(busqueda)
+        );
 
-        proyectos.forEach((proyecto) => {
-            const contenido = proyecto.textContent
-                .toLocaleLowerCase("es");
+        // Creamos un conjunto con las tarjetas encontradas.
+        const tarjetasVisibles = new Set(
+            coincidencias.map((tarjeta) => tarjeta.elemento)
+        );
 
-            const tecnologias = (
-                proyecto.dataset.tecnologias || ""
-            ).toLocaleLowerCase("es");
-
-            const coincide =
-                consulta === "" ||
-                contenido.includes(consulta) ||
-                tecnologias.includes(consulta);
-
-            // Ocultar los proyectos que no coincidan.
-            proyecto.hidden = !coincide;
-
-            if (coincide) {
-                cantidadVisibles++;
-            }
+        // Mostramos las coincidencias y ocultamos las demás.
+        tarjetasExperiencia.map((tarjeta) => {
+            tarjeta.elemento.hidden = !tarjetasVisibles.has(
+                tarjeta.elemento
+            );
         });
 
-        if (mensajeFiltro) {
-            if (consulta === "") {
-                mensajeFiltro.textContent =
-                    `Mostrando todos los proyectos (${cantidadVisibles}).`;
-            } else if (cantidadVisibles === 0) {
-                mensajeFiltro.textContent =
-                    "No se encontraron proyectos coincidentes.";
-            } else {
-                mensajeFiltro.textContent =
-                    `Se encontraron ${cantidadVisibles} proyecto(s).`;
-            }
+        // Actualizamos el mensaje para el usuario.
+        if (busqueda === "") {
+            resultadoFiltro.textContent =
+                `Se muestran todas las tarjetas: ${tarjetasExperiencia.length}.`;
+        } else if (coincidencias.length === 0) {
+            resultadoFiltro.textContent =
+                "No se encontraron coincidencias.";
+        } else {
+            resultadoFiltro.textContent =
+                `Se encontraron ${coincidencias.length} resultado(s).`;
         }
-    }
-
-    filtro.addEventListener("input", filtrarProyectos);
-
-    // Aplicar el filtro inicial.
-    filtrarProyectos();
+    });
 }
-
 
 // ========================================
 // 4. FORMULARIO DE CONTACTO
