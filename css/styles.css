@@ -1,4 +1,3 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
 
 /* =========================
@@ -659,4 +658,103 @@ footer p {
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
     }
+}
+
+
+/* Ajustes para el HTML corregido */
+
+#formacion {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+#formacion h2 {
+    flex-basis: 100%;
+}
+
+#formacion article {
+    flex: 1 1 260px;
+    min-width: 0;
+    padding: 24px;
+    border: 1px solid var(--color-borde);
+    border-radius: var(--radio);
+    background: var(--color-superficie);
+    box-shadow: 0 5px 18px var(--color-sombra);
+}
+
+#formacion article p {
+    color: var(--color-secundario);
+}
+
+#experiencia .controles {
+    flex-basis: 100%;
+    width: 100%;
+}
+
+#experiencia .controles label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 600;
+}
+
+#formulario_contacto fieldset {
+    min-width: 0;
+    padding: 20px;
+    border: 1px solid var(--color-borde);
+    border-radius: 12px;
+}
+
+#formulario_contacto legend {
+    padding-inline: 8px;
+    font-weight: 700;
+}
+
+#formulario_contacto .campo-checkbox {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+#formulario_contacto .campo-checkbox input {
+    width: auto;
+    min-height: auto;
+    margin-top: 7px;
+    flex-shrink: 0;
+}
+
+#formulario_contacto .campo-checkbox label {
+    margin-bottom: 0;
+}
+
+.tabla-contenedor {
+    max-width: 100%;
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--color-superficie);
+}
+
+th,
+td {
+    padding: 12px;
+    border: 1px solid var(--color-borde);
+    text-align: left;
+}
+
+caption {
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+#formulario_contacto button {
+    width: auto;
+}
+
+#formulario_contacto button:focus-visible {
+    outline: 3px solid var(--color-principal);
+    outline-offset: 4px;
 }
