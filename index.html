@@ -1,118 +1,123 @@
 
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <meta name="description"
-          content="Portafolio profesional de Scarlet Luciana Saavedra Ayarde, estudiante de Ingeniería de Sistemas, líder juvenil y voluntaria en comunidades STEM.">
-
+    <meta name="description" content="Portafolio profesional de Scarlet Luciana Saavedra Ayarde, estudiante de Ingeniería de Sistemas, líder juvenil y voluntaria en comunidades STEM.">
     <meta name="author" content="Scarlet Luciana Saavedra Ayarde">
+    <meta name="theme-color" content="#6c63ff">
 
     <title>Hoja de Vida | Scarlet Luciana Saavedra Ayarde</title>
 
     <link rel="stylesheet" href="css/styles.css">
+    <script src="js/script.js" defer></script>
 </head>
 
 <body>
-
-    <!-- Accesibilidad -->
     <a href="#contenido-principal">Saltar al contenido principal</a>
 
-    <!-- Encabezado -->
-    <header id="inicio">
-
-        <picture>
-            <source media="(min-width: 768px)"
-                    srcset="assets/images/foto.jpeg">
-
-            <img src="assets/images/foto.jpeg"
-                 alt="Fotografía de Scarlet Luciana Saavedra Ayarde"
-                 width="180"
-                 height="180">
-        </picture>
-
-        <h1>Scarlet Luciana Saavedra Ayarde</h1>
-
-        <p>Estudiante de Ingeniería de Sistemas | Liderazgo STEM | Divulgación científica</p>
-
-        <p>
-            <em>
-                Apasionada por la tecnología, la ciencia, la innovación
-                y la creación de comunidades que generan oportunidades.
-            </em>
-        </p>
-
-        <address>
-            La Paz, Bolivia<br>
-
-            Correo electrónico:
-            <a href="mailto:scarlet.saavedra.ayarde@gmail.com">
-                scarlet.saavedra.ayarde@gmail.com
-            </a><br>
-
-            Teléfono:
-            <a href="tel:+59177708661">+591 77708661</a>
-        </address>
-
-        <p>
-            <a href="assets/documents/cv-luciana-saavedra.pdf"
-               download="CV_Scarlet_Luciana_Saavedra_Ayarde.pdf">
-                Descargar hoja de vida en PDF
+    <!-- Encabezado y navegación -->
+    <header>
+        <div class="header-contenido container">
+            <a class="logo" href="#inicio" aria-label="Ir al inicio">
+                Scarlet Saavedra
             </a>
-        </p>
 
-        <button id="modo_btn" type="button">
-            Cambiar modo de visualización
-        </button>
+            <button id="menu-btn" type="button"
+                    aria-label="Abrir menú de navegación"
+                    aria-expanded="false"
+                    aria-controls="menu-principal">
+                Menú
+            </button>
 
+            <button id="modo_btn" type="button" aria-pressed="false">
+                🌙 Modo oscuro
+            </button>
+        </div>
+
+        <nav id="menu-principal" aria-label="Navegación principal">
+            <ul class="container">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#perfil">Perfil</a></li>
+                <li><a href="#formacion">Educación</a></li>
+                <li><a href="#experiencia">Experiencia y liderazgo</a></li>
+                <li><a href="#habilidades">Habilidades</a></li>
+                <li><a href="#idiomas">Idiomas</a></li>
+                <li><a href="#programas">Programas</a></li>
+                <li><a href="#proyectos">Proyectos</a></li>
+                <li><a href="#reconocimientos">Reconocimientos</a></li>
+                <li><a href="#repositorios">GitHub</a></li>
+                <li><a href="#multimedia">Multimedia</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
     </header>
 
-    <hr>
-
-    <!-- Menú de navegación -->
-    <button id="menu-btn"
-            type="button"
-            aria-label="Abrir menú de navegación"
-            aria-expanded="false"
-            aria-controls="menu-principal">
-        Menú
-    </button>
-
-    <nav id="menu-principal" aria-label="Navegación principal">
-
-        <a href="#perfil">Perfil</a>
-        <a href="#formacion">Educación</a>
-        <a href="#experiencia">Experiencia y liderazgo</a>
-        <a href="#habilidades">Habilidades</a>
-        <a href="#programas">Programas</a>
-        <a href="#proyectos">Proyectos</a>
-        <a href="#reconocimientos">Reconocimientos</a>
-        <a href="#repositorios">GitHub</a>
-        <a href="#contacto">Contacto</a>
-
-    </nav>
-
-    <hr>
-
-    <!-- Contenido principal -->
     <main id="contenido-principal">
+        <!-- Presentación -->
+        <section id="inicio" class="container" aria-labelledby="titulo-inicio">
+            <div>
+                <p class="etiqueta">Estudiante de Ingeniería de Sistemas</p>
 
-        <!-- Perfil -->
-        <section id="perfil" aria-labelledby="titulo-perfil">
+                <h1 id="titulo-inicio">Scarlet Luciana Saavedra Ayarde</h1>
 
+                <p>
+                    Liderazgo STEM | Divulgación científica | Tecnología e innovación
+                </p>
+
+                <p>
+                    <em>
+                        Apasionada por la tecnología, la ciencia, la innovación
+                        y la creación de comunidades que generan oportunidades.
+                    </em>
+                </p>
+
+                <address>
+                    La Paz, Bolivia<br>
+                    Correo electrónico:
+                    <a href="mailto:scarlet.saavedra.ayarde@gmail.com">
+                        scarlet.saavedra.ayarde@gmail.com
+                    </a><br>
+                    Teléfono:
+                    <a href="tel:+59177708661">+591 77708661</a>
+                </address>
+
+                <div class="botones-inicio">
+                    <a class="boton"
+                       href="assets/documents/cv-luciana-saavedra.pdf"
+                       download="CV_Scarlet_Luciana_Saavedra_Ayarde.pdf">
+                        Descargar hoja de vida en PDF
+                    </a>
+
+                    <a class="boton boton-secundario" href="#contacto">
+                        Contactarme
+                    </a>
+                </div>
+            </div>
+
+            <picture>
+                <source media="(min-width: 768px)"
+                        srcset="assets/images/foto.jpeg">
+                <img src="assets/images/foto.jpeg"
+                     alt="Fotografía de Scarlet Luciana Saavedra Ayarde"
+                     width="300" height="300"
+                     fetchpriority="high">
+            </picture>
+        </section>
+
+        <!-- Perfil profesional -->
+        <section id="perfil" class="container" aria-labelledby="titulo-perfil">
             <h2 id="titulo-perfil">Perfil profesional</h2>
 
             <p>
                 Soy una joven boliviana creativa, responsable y con vocación
                 de servicio, estudiante de
                 <strong>Ingeniería de Sistemas en la Universidad Católica
-                Boliviana "San Pablo"</strong>.
-                Desde pequeña me interesan las áreas STEM, el arte y los
-                deportes, intereses que me han llevado a participar en
-                competencias, cursos, eventos científicos y proyectos sociales.
+                Boliviana "San Pablo"</strong>. Desde pequeña me interesan
+                las áreas STEM, el arte y los deportes, intereses que me han
+                llevado a participar en competencias, cursos, eventos científicos
+                y proyectos sociales.
             </p>
 
             <p>
@@ -128,34 +133,22 @@
                 promuevan la educación, la innovación y la participación de
                 mujeres y jóvenes en STEM.
             </p>
-
         </section>
 
         <!-- Formación académica -->
-        <section id="formacion" aria-labelledby="titulo-formacion">
-
+        <section id="formacion" class="container" aria-labelledby="titulo-formacion">
             <h2 id="titulo-formacion">Formación académica</h2>
 
             <article>
                 <h3>Licenciatura en Ingeniería de Sistemas</h3>
-
-                <p>
-                    <strong>Universidad Católica Boliviana "San Pablo"</strong>
-                </p>
-
-                <p>
-                    <time datetime="2025-02">Febrero de 2025</time> –
-                    Presente
-                </p>
-
+                <p><strong>Universidad Católica Boliviana "San Pablo"</strong></p>
+                <p><time datetime="2025-02">Febrero de 2025</time> – Presente</p>
                 <p>Estudios universitarios en curso.</p>
             </article>
 
             <article>
                 <h3>Técnico Medio en Idioma Inglés</h3>
-
                 <p><strong>Centro Boliviano Americano (CBA)</strong></p>
-
                 <p>
                     <time datetime="2022-01">Enero de 2022</time> –
                     <time datetime="2025-04">Abril de 2025</time>
@@ -164,20 +157,17 @@
 
             <article>
                 <h3>Bachiller en Humanidades y Técnico Medio en Administración de Empresas</h3>
-
                 <p><strong>Colegio Santa Ana</strong></p>
-
                 <p>
                     <time datetime="2013-02">Febrero de 2013</time> –
                     <time datetime="2024-12">Diciembre de 2024</time>
                 </p>
             </article>
-
         </section>
 
         <!-- Experiencia, voluntariado y liderazgo -->
-        <section id="experiencia" aria-labelledby="titulo-experiencia">
-
+        <section id="experiencia" class="container"
+                 aria-labelledby="titulo-experiencia">
             <h2 id="titulo-experiencia">Experiencia, voluntariado y liderazgo</h2>
 
             <p>
@@ -186,223 +176,119 @@
                 actividades y fomentar el aprendizaje en comunidad.
             </p>
 
-            <!-- Buscador -->
-            <div>
+            <div class="controles">
                 <label for="filtro-proyectos">
                     Buscar experiencia u organización:
                 </label>
-
-                <input type="search"
-                       id="filtro-proyectos"
+                <input type="search" id="filtro-proyectos"
                        placeholder="Ej. IEEE, programación, ciencia"
                        aria-label="Filtrar experiencias y organizaciones">
-
-                <p id="resultado-filtro" role="status" aria-live="polite"></p>
+                <p id="resultado-filtro" role="status" aria-live="polite">
+                    Escribe para filtrar las experiencias.
+                </p>
             </div>
 
             <article>
                 <h3>Ayudante de la asignatura Programación I</h3>
-
-                <p>
-                    <strong>Universidad Católica Boliviana "San Pablo"</strong>
-                </p>
-
-                <p>
-                    <time datetime="2026-08">Agosto de 2026</time> – Presente
-                </p>
-
+                <p><strong>Universidad Católica Boliviana "San Pablo"</strong></p>
+                <p><time datetime="2026-08">Agosto de 2026</time> – Presente</p>
                 <ul>
-                    <li>
-                        Apoyar a los estudiantes en la comprensión de los
-                        conceptos fundamentales de programación.
-                    </li>
-                    <li>
-                        Orientar la resolución de ejercicios prácticos y el
-                        desarrollo de habilidades de programación.
-                    </li>
+                    <li>Apoyar a los estudiantes en la comprensión de los conceptos fundamentales de programación.</li>
+                    <li>Orientar la resolución de ejercicios prácticos y el desarrollo de habilidades de programación.</li>
                 </ul>
             </article>
 
             <article>
                 <h3>Coordinadora Departamental de La Paz</h3>
-
                 <p><strong>Aerospace Science Academy Bolivia</strong></p>
-
-                <p>
-                    <time datetime="2026-07">Julio de 2026</time> – Presente
-                </p>
-
+                <p><time datetime="2026-07">Julio de 2026</time> – Presente</p>
                 <ul>
-                    <li>
-                        Apoyar en la coordinación de actividades y eventos
-                        de divulgación científica y tecnológica.
-                    </li>
-                    <li>
-                        Participar en la planificación y organización del
-                        Bolivian Aerospace Rocketry Challenge.
-                    </li>
-                    <li>
-                        Promover la participación estudiantil y el interés
-                        por las ciencias aeroespaciales.
-                    </li>
+                    <li>Apoyar en la coordinación de actividades y eventos de divulgación científica y tecnológica.</li>
+                    <li>Participar en la planificación y organización del Bolivian Aerospace Rocketry Challenge.</li>
+                    <li>Promover el interés estudiantil por las ciencias aeroespaciales.</li>
                 </ul>
             </article>
 
             <article>
                 <h3>Voluntaria</h3>
-
                 <p><strong>Microsoft User Group Bolivia</strong></p>
-
-                <p>
-                    <time datetime="2026-06">Junio de 2026</time> – Presente
-                </p>
-
+                <p><time datetime="2026-06">Junio de 2026</time> – Presente</p>
                 <ul>
-                    <li>
-                        Apoyar en la organización de actividades y talleres
-                        de aprendizaje sobre tecnologías Microsoft.
-                    </li>
-                    <li>
-                        Fomentar la participación y colaboración estudiantil
-                        en espacios de formación tecnológica.
-                    </li>
+                    <li>Apoyar en la organización de actividades y talleres sobre tecnologías Microsoft.</li>
+                    <li>Fomentar la participación y colaboración estudiantil en espacios de formación tecnológica.</li>
                 </ul>
             </article>
 
             <article>
                 <h3>Secretaria General del capítulo Computer Society</h3>
-
-                <p>
-                    <strong>Rama Estudiantil IEEE – Universidad Católica Boliviana</strong>
-                </p>
-
-                <p>
-                    <time datetime="2025-05">Mayo de 2025</time> – Presente
-                </p>
-
+                <p><strong>Rama Estudiantil IEEE – Universidad Católica Boliviana</strong></p>
+                <p><time datetime="2025-05">Mayo de 2025</time> – Presente</p>
                 <ul>
-                    <li>
-                        Apoyar en la organización de actividades académicas,
-                        talleres y conferencias.
-                    </li>
-                    <li>
-                        Colaborar en la planificación y coordinación de
-                        iniciativas tecnológicas y científicas.
-                    </li>
-                    <li>
-                        Facilitar la vinculación de estudiantes con
-                        oportunidades de aprendizaje, investigación y colaboración.
-                    </li>
+                    <li>Apoyar en la organización de actividades académicas, talleres y conferencias.</li>
+                    <li>Colaborar en la planificación y coordinación de iniciativas tecnológicas y científicas.</li>
+                    <li>Facilitar la vinculación de estudiantes con oportunidades de aprendizaje e investigación.</li>
                 </ul>
             </article>
 
             <article>
                 <h3>Miembro</h3>
-
                 <p><strong>Bolivia Joven</strong></p>
-
                 <ul>
-                    <li>
-                        Participar en actividades de liderazgo juvenil
-                        y proyectos sociales.
-                    </li>
+                    <li>Participar en actividades de liderazgo juvenil y proyectos sociales.</li>
                 </ul>
             </article>
 
             <article>
                 <h3>Voluntaria del equipo Outreach</h3>
-
                 <p><strong>NeuroTech UCB</strong></p>
-
-                <p>
-                    <time datetime="2025-02">Febrero de 2025</time> – Presente
-                </p>
-
+                <p><time datetime="2025-02">Febrero de 2025</time> – Presente</p>
                 <ul>
-                    <li>
-                        Colaborar en la organización de charlas, talleres
-                        y actividades de vinculación.
-                    </li>
-                    <li>
-                        Fomentar el interés por la neurociencia y la tecnología
-                        entre estudiantes de distintas áreas.
-                    </li>
+                    <li>Colaborar en la organización de charlas, talleres y actividades de vinculación.</li>
+                    <li>Fomentar el interés por la neurociencia y la tecnología entre estudiantes.</li>
                 </ul>
             </article>
 
             <article>
                 <h3>Voluntaria de desarrollo web</h3>
-
                 <p><strong>Proyecto MOTRIX</strong></p>
-
-                <p>
-                    <time datetime="2025-02">Febrero de 2025</time> – Presente
-                </p>
-
+                <p><time datetime="2025-02">Febrero de 2025</time> – Presente</p>
                 <ul>
-                    <li>
-                        Colaborar en el desarrollo de la página web del proyecto
-                        utilizando HTML5 nativo.
-                    </li>
+                    <li>Colaborar en el desarrollo de la página web del proyecto utilizando HTML5 nativo.</li>
                 </ul>
             </article>
 
             <article>
                 <h3>Líder de la Comisión de Divulgación Científica y Comunicación</h3>
-
                 <p><strong>CienciaLink</strong></p>
-
-                <p>
-                    <time datetime="2025-02">Febrero de 2025</time> – Presente
-                </p>
-
+                <p><time datetime="2025-02">Febrero de 2025</time> – Presente</p>
                 <ul>
-                    <li>
-                        Coordinar equipos para la creación de contenido científico.
-                    </li>
-                    <li>
-                        Colaborar en la organización de talleres y actividades
-                        de divulgación científica.
-                    </li>
-                    <li>
-                        Promover la comunicación de conocimientos científicos
-                        a distintos públicos.
-                    </li>
+                    <li>Coordinar equipos para la creación de contenido científico.</li>
+                    <li>Colaborar en la organización de talleres y actividades de divulgación científica.</li>
+                    <li>Promover la comunicación de conocimientos científicos a distintos públicos.</li>
                 </ul>
             </article>
 
             <article>
                 <h3>Voluntaria del equipo de Contenido y Tecnología</h3>
-
                 <p><strong>Club de Chicas Programadoras</strong></p>
-
                 <p>
                     <time datetime="2022-07">Julio de 2022</time> –
                     <time datetime="2023-12">Diciembre de 2023</time>
                 </p>
-
                 <ul>
-                    <li>
-                        Elaborar materiales y recursos para apoyar el aprendizaje
-                        de programación en niñas y jóvenes.
-                    </li>
-                    <li>
-                        Contribuir a iniciativas orientadas a despertar el
-                        interés por la tecnología.
-                    </li>
+                    <li>Elaborar materiales y recursos para apoyar el aprendizaje de programación en niñas y jóvenes.</li>
+                    <li>Contribuir a iniciativas que despiertan el interés por la tecnología.</li>
                 </ul>
             </article>
-
         </section>
 
         <!-- Habilidades -->
-        <section id="habilidades" aria-labelledby="titulo-habilidades">
-
+        <section id="habilidades" class="container"
+                 aria-labelledby="titulo-habilidades">
             <h2 id="titulo-habilidades">Habilidades</h2>
 
             <article>
                 <h3>Lenguajes de programación y tecnologías</h3>
-
                 <ul>
                     <li>Python</li>
                     <li>C++</li>
@@ -414,7 +300,6 @@
 
             <article>
                 <h3>Herramientas digitales</h3>
-
                 <ul>
                     <li>Canva</li>
                     <li>Notion</li>
@@ -423,7 +308,6 @@
 
             <article>
                 <h3>Competencias personales</h3>
-
                 <ul>
                     <li>Trabajo en equipo y colaboración.</li>
                     <li>Responsabilidad y compromiso.</li>
@@ -437,7 +321,6 @@
 
             <article>
                 <h3>Áreas de interés</h3>
-
                 <ul>
                     <li>Programación y desarrollo de software.</li>
                     <li>Ciencia, tecnología e innovación.</li>
@@ -446,44 +329,38 @@
                     <li>Comunicación y proyectos sociales.</li>
                 </ul>
             </article>
-
         </section>
 
         <!-- Idiomas -->
-        <section id="idiomas" aria-labelledby="titulo-idiomas">
-
+        <section id="idiomas" class="container" aria-labelledby="titulo-idiomas">
             <h2 id="titulo-idiomas">Idiomas</h2>
-
-            <table>
-                <caption>Idiomas y nivel de dominio</caption>
-
-                <thead>
-                    <tr>
-                        <th scope="col">Idioma</th>
-                        <th scope="col">Nivel</th>
-                    </tr>
-                </thead>
-
-                <tbody>
-                    <tr>
-                        <th scope="row">Español</th>
-                        <td>Nativo</td>
-                    </tr>
-
-                    <tr>
-                        <th scope="row">Inglés</th>
-                        <td>Avanzado</td>
-                    </tr>
-                </tbody>
-            </table>
-
+            <div class="tabla-contenedor">
+                <table>
+                    <caption>Idiomas y nivel de dominio</caption>
+                    <thead>
+                        <tr>
+                            <th scope="col">Idioma</th>
+                            <th scope="col">Nivel</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">Español</th>
+                            <td>Nativo</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Inglés</th>
+                            <td>Avanzado</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </section>
 
         <!-- Programas y actividades -->
-        <section id="programas" aria-labelledby="titulo-programas">
-
+        <section id="programas" class="container"
+                 aria-labelledby="titulo-programas">
             <h2 id="titulo-programas">Programas y actividades extracurriculares</h2>
-
             <ul>
                 <li>
                     <strong>Python Study Group for Beginners – Python La Paz</strong>
@@ -491,41 +368,35 @@
                     <time datetime="2025-04">Abril de 2025</time> –
                     <time datetime="2025-07">Julio de 2025</time>
                 </li>
-
                 <li>
                     <strong>Programa Chicas en Tecnología – CET y Disney</strong>
                     <p>Participante alumni.</p>
                     <time datetime="2024-03">Marzo de 2024</time> –
                     <time datetime="2024-04">Abril de 2024</time>
                 </li>
-
                 <li>
                     <strong>Equipo de la Olimpiada Copernicus – Bolivia</strong>
                     <p>Miembro del equipo.</p>
                     <time datetime="2023-09">Septiembre de 2023</time> –
                     <time datetime="2024-12">Diciembre de 2024</time>
                 </li>
-
                 <li>
                     <strong>Equipo de Olimpiada Científica Estudiantil – Colegio Santa Ana</strong>
                     <p>Miembro del equipo.</p>
                     <time datetime="2022-02">Febrero de 2022</time> –
                     <time datetime="2024-12">Diciembre de 2024</time>
                 </li>
-
                 <li>
                     <strong>Dr. Sonrisas Bolivia</strong>
                     <p>Voluntaria.</p>
                     <time datetime="2022-02">Febrero de 2022</time> –
                     <time datetime="2023-02">Febrero de 2023</time>
                 </li>
-
                 <li>
                     <strong>Juventud Apostólica de Schoenstatt</strong>
                     <p>Voluntaria.</p>
                     <time datetime="2018-02">Febrero de 2018</time> – Presente
                 </li>
-
                 <li>
                     <strong>Delegación nacional de tenis – Cancha Roja y Naranja</strong>
                     <p>Capitana de la delegación nacional.</p>
@@ -533,57 +404,43 @@
                     <time datetime="2016-12">Diciembre de 2016</time>
                 </li>
             </ul>
-
         </section>
 
         <!-- Proyectos -->
-        <section id="proyectos" aria-labelledby="titulo-proyectos">
-
+        <section id="proyectos" class="container"
+                 aria-labelledby="titulo-proyectos">
             <h2 id="titulo-proyectos">Proyectos destacados</h2>
 
             <article>
                 <h3>Pioneras.bo</h3>
-
-                <p>
-                    <time datetime="2023-08">Agosto de 2023</time> – Presente
-                </p>
-
+                <p><time datetime="2023-08">Agosto de 2023</time> – Presente</p>
                 <p>
                     Comunidad que busca visibilizar oportunidades para mujeres
                     en campos STEM en Bolivia, impulsando talleres y programas
                     que promueven su participación en ciencia y tecnología.
                 </p>
-
                 <p><strong>Enfoque:</strong> inclusión, educación y liderazgo femenino en STEM.</p>
             </article>
 
             <article>
                 <h3>AtixTech</h3>
-
-                <p>
-                    <time datetime="2020-08">Agosto de 2020</time> – Presente
-                </p>
-
+                <p><time datetime="2020-08">Agosto de 2020</time> – Presente</p>
                 <p>
                     Comunidad orientada a enseñar, motivar y comprometer a más
                     personas con la ciencia y la tecnología, sin importar su
                     edad, género o profesión.
                 </p>
-
                 <p><strong>Enfoque:</strong> aprendizaje, tecnología y divulgación científica.</p>
             </article>
 
             <article>
                 <h3>NeuroCinema: explorando la mente a través del cine, el arte y las emociones</h3>
-
                 <p><strong>Organización:</strong> IEEE Computer Society UCB.</p>
-
                 <p>
-                    Iniciativa interdisciplinaria que propone conectar el cine
-                    con conceptos de neurociencia mediante proyecciones,
+                    Iniciativa interdisciplinaria que conecta el cine con
+                    conceptos de neurociencia mediante proyecciones,
                     introducciones educativas y debates guiados.
                 </p>
-
                 <ul>
                     <li>Divulgación científica a través de medios audiovisuales.</li>
                     <li>Promoción del pensamiento crítico y el diálogo.</li>
@@ -593,53 +450,40 @@
 
             <article>
                 <h3>MOTRIX – Smart Rehabilitation System</h3>
-
                 <p>
                     Proyecto de tecnología aplicada a la rehabilitación,
                     en el que colaboro con el desarrollo de una página web
                     utilizando HTML5 nativo.
                 </p>
-
                 <p><strong>Área:</strong> desarrollo web y tecnología aplicada a la salud.</p>
             </article>
 
             <article>
                 <h3>VaJeiNa Planner</h3>
-
                 <p>
                     Proyecto académico de planificación de tareas orientado
                     a estudiantes, con funciones para organizar actividades,
                     establecer prioridades y realizar seguimiento de tareas.
                 </p>
-
-                <p>
-                    <strong>Tecnologías:</strong>
-                    HTML5, CSS3, JavaScript y PHP.
-                </p>
-
+                <p><strong>Tecnologías:</strong> HTML5, CSS3, JavaScript y PHP.</p>
                 <p>
                     <a href="https://github.com/luciana-saavedra"
-                       target="_blank"
-                       rel="noopener noreferrer">
+                       target="_blank" rel="noopener noreferrer">
                         Explorar perfil de GitHub
                     </a>
                 </p>
             </article>
-
         </section>
 
         <!-- Reconocimientos -->
-        <section id="reconocimientos" aria-labelledby="titulo-reconocimientos">
-
+        <section id="reconocimientos" class="container"
+                 aria-labelledby="titulo-reconocimientos">
             <h2 id="titulo-reconocimientos">Reconocimientos</h2>
 
             <article>
                 <h3>Premio Niña Fabulosa en STEM</h3>
-
                 <p><strong>AMUJI Latinoamérica</strong></p>
-
                 <p><time datetime="2020">2020</time></p>
-
                 <p>
                     Reconocimiento por mi contribución y participación activa
                     en proyectos y comunidades que buscan integrar a más
@@ -649,223 +493,159 @@
 
             <article>
                 <h3>Embajadora WomenTech Network</h3>
-
                 <p><time datetime="2020">2020</time> – Presente</p>
-
                 <p>
                     Participación vinculada a iniciativas de igualdad de género,
                     educación de calidad y promoción de oportunidades para
                     mujeres en tecnología.
                 </p>
-
                 <p>
                     <strong>Objetivos relacionados:</strong>
                     ODS 5 – Igualdad de género y ODS 4 – Educación de calidad.
                 </p>
             </article>
-
         </section>
 
-        <!-- Repositorios -->
-        <section id="repositorios" aria-labelledby="titulo-repositorios">
-
+        <!-- GitHub -->
+        <section id="repositorios" class="container"
+                 aria-labelledby="titulo-repositorios">
             <h2 id="titulo-repositorios">Mis repositorios de GitHub</h2>
-
-            <p>
-                Explora mis proyectos de programación y desarrollo.
-            </p>
-
+            <p>Explora mis proyectos de programación y desarrollo.</p>
             <p>
                 <a href="https://github.com/luciana-saavedra"
-                   target="_blank"
-                   rel="noopener noreferrer">
+                   target="_blank" rel="noopener noreferrer">
                     Visitar mi perfil de GitHub
                 </a>
             </p>
-
             <p id="estado-github" role="status" aria-live="polite">
-                Los repositorios se cargarán si la consulta automática está configurada.
+                Cargando repositorios...
             </p>
-
             <ul id="lista-repositorios"></ul>
-
             <button id="reintentar-github" type="button">
                 Volver a intentar cargar repositorios
             </button>
-
         </section>
 
-        <!-- Portafolio multimedia -->
-        <section id="multimedia" aria-labelledby="titulo-multimedia">
-
+        <!-- Multimedia -->
+        <section id="multimedia" class="container"
+                 aria-labelledby="titulo-multimedia">
             <h2 id="titulo-multimedia">Portafolio multimedia</h2>
 
             <figure>
                 <img src="assets/images/proyecto.jpeg"
                      alt="Vista previa de un proyecto académico de desarrollo web"
-                     width="400"
-                     loading="lazy">
-
-                <figcaption>
-                    Proyecto académico de desarrollo web.
-                </figcaption>
+                     width="400" loading="lazy">
+                <figcaption>Proyecto académico de desarrollo web.</figcaption>
             </figure>
 
             <article>
                 <h3>Presentación profesional en audio</h3>
-
-                <audio controls
-                       preload="metadata"
+                <audio controls preload="metadata"
                        aria-label="Audio de presentación personal">
-
-                    <source src="assets/audio/presentacion.mp3"
-                            type="audio/mpeg">
-
+                    <source src="assets/audio/presentacion.mp3" type="audio/mpeg">
                     Tu navegador no admite la reproducción de audio HTML5.
                 </audio>
             </article>
 
             <article>
                 <h3>Demostración de un proyecto</h3>
-
-                <video width="400"
-                       controls
-                       preload="metadata"
+                <video controls preload="metadata"
                        aria-label="Video de demostración de un proyecto académico">
-
-                    <source src="assets/video/proyecto.mp4"
-                            type="video/mp4">
-
+                    <source src="assets/video/proyecto.mp4" type="video/mp4">
                     <track src="assets/video/subtitulos.vtt"
-                           kind="subtitles"
-                           srclang="es"
-                           label="Español">
-
+                           kind="subtitles" srclang="es" label="Español">
                     Tu navegador no admite la reproducción de video HTML5.
                 </video>
             </article>
-
         </section>
 
         <!-- Información adicional -->
-        <aside aria-labelledby="titulo-adicional">
-
+        <aside class="container" aria-labelledby="titulo-adicional">
             <h2 id="titulo-adicional">Intereses personales</h2>
-
             <p>
                 Me interesa la convergencia entre la ciencia, la tecnología,
                 la educación, el arte y el servicio a la comunidad.
             </p>
-
             <details>
                 <summary>Conocer más sobre mis intereses</summary>
-
                 <p>
                     Disfruto participar en comunidades de aprendizaje,
                     iniciativas de divulgación científica, proyectos
                     tecnológicos y actividades que conectan a jóvenes con
                     nuevas oportunidades educativas.
                 </p>
-
                 <p>
                     También tengo interés en el deporte, la creatividad,
                     la comunicación y el desarrollo de iniciativas con
                     impacto social.
                 </p>
             </details>
-
         </aside>
 
-        <!-- Diálogo de disponibilidad -->
-        <section aria-labelledby="titulo-disponibilidad">
-
+        <!-- Disponibilidad y diálogo -->
+        <section id="disponibilidad" class="container"
+                 aria-labelledby="titulo-disponibilidad">
             <h2 id="titulo-disponibilidad">Disponibilidad</h2>
-
             <p>
                 Estoy interesada en continuar aprendiendo y colaborar en
                 iniciativas académicas, científicas, tecnológicas y sociales.
             </p>
-
             <button id="btn-disponibilidad" type="button">
                 Ver información de disponibilidad
             </button>
 
-            <dialog id="modal-info"
-                    aria-labelledby="titulo-modal">
-
+            <dialog id="modal-info" aria-labelledby="titulo-modal">
                 <h3 id="titulo-modal">Disponibilidad y colaboración</h3>
-
                 <p>
                     Puedes contactarme para conversar sobre proyectos,
                     actividades educativas, iniciativas STEM y oportunidades
                     de colaboración.
                 </p>
-
                 <form method="dialog">
                     <button type="submit">Cerrar</button>
                 </form>
-
             </dialog>
-
         </section>
 
         <!-- Contacto -->
-        <section id="contacto" aria-labelledby="titulo-contacto">
-
+        <section id="contacto" class="container"
+                 aria-labelledby="titulo-contacto">
             <h2 id="titulo-contacto">Contacto</h2>
-
             <p id="ayuda-contacto">
                 Si deseas comunicarte conmigo para una consulta o propuesta
                 de colaboración, puedes utilizar el siguiente formulario.
                 Los campos marcados son obligatorios.
             </p>
 
-            <form id="formulario_contacto"
-                  action="#"
-                  method="post"
+            <form id="formulario_contacto" action="#" method="post"
                   aria-describedby="ayuda-contacto">
-
                 <fieldset>
-
                     <legend>Datos de contacto y mensaje</legend>
 
                     <p>
-                        <label for="nombre">Nombre completo:</label><br>
-
-                        <input type="text"
-                               id="nombre"
-                               name="nombre"
+                        <label for="nombre">Nombre completo:</label>
+                        <input type="text" id="nombre" name="nombre"
                                placeholder="Escribe tu nombre"
-                               minlength="3"
-                               maxlength="80"
-                               autocomplete="name"
-                               required>
+                               minlength="3" maxlength="80"
+                               autocomplete="name" required>
                     </p>
 
                     <p>
-                        <label for="correo">Correo electrónico:</label><br>
-
-                        <input type="email"
-                               id="correo"
-                               name="correo"
+                        <label for="correo">Correo electrónico:</label>
+                        <input type="email" id="correo" name="correo"
                                placeholder="nombre@correo.com"
-                               autocomplete="email"
-                               required>
+                               autocomplete="email" required>
                     </p>
 
                     <p>
-                        <label for="telefono">Teléfono (opcional):</label><br>
-
-                        <input type="tel"
-                               id="telefono"
-                               name="telefono"
+                        <label for="telefono">Teléfono (opcional):</label>
+                        <input type="tel" id="telefono" name="telefono"
                                placeholder="+591 70000000"
                                autocomplete="tel">
                     </p>
 
                     <p>
-                        <label for="motivo">Motivo del contacto:</label><br>
-
+                        <label for="motivo">Motivo del contacto:</label>
                         <select id="motivo" name="motivo" required>
                             <option value="">Selecciona una opción</option>
                             <option value="proyecto">Colaboración en un proyecto</option>
@@ -878,39 +658,31 @@
                     </p>
 
                     <p>
-                        <label for="mensaje">Mensaje:</label><br>
-
-                        <textarea id="mensaje"
-                                  name="mensaje"
-                                  rows="5"
-                                  cols="40"
-                                  minlength="10"
-                                  maxlength="1000"
+                        <label for="mensaje">Mensaje:</label>
+                        <textarea id="mensaje" name="mensaje" rows="5"
+                                  minlength="10" maxlength="1000"
                                   placeholder="Escribe tu mensaje..."
                                   required></textarea>
                     </p>
 
-                    <p>
-                        <input type="checkbox"
-                               id="aceptacion"
-                               name="aceptacion"
-                               required>
-
+                    <p class="campo-checkbox">
+                        <input type="checkbox" id="aceptacion"
+                               name="aceptacion" required>
                         <label for="aceptacion">
                             Acepto que mis datos se utilicen para responder
                             a esta consulta.
                         </label>
                     </p>
 
-                    <button type="submit">Enviar mensaje</button>
-                    <button type="reset">Limpiar formulario</button>
+                    <div class="botones-inicio">
+                        <button class="boton" type="submit">Validar formulario</button>
+                        <button class="boton boton-secundario" type="reset">
+                            Limpiar formulario
+                        </button>
+                    </div>
 
-                    <p id="mensaje_formulario"
-                       role="status"
-                       aria-live="polite"></p>
-
+                    <p id="mensaje_formulario" role="status" aria-live="polite"></p>
                 </fieldset>
-
             </form>
 
             <p>
@@ -919,36 +691,21 @@
                     mi correo electrónico
                 </a>.
             </p>
-
         </section>
-
     </main>
 
-    <hr>
-
-    <!-- Pie de página -->
     <footer>
-
         <p>
             &copy; <time datetime="2026">2026</time>
             Scarlet Luciana Saavedra Ayarde.
         </p>
-
         <p>
             <small>
-                Portafolio personal desarrollado con HTML5 nativo,
-                CSS3 y JavaScript.
+                Portafolio personal desarrollado con HTML5 semántico,
+                CSS3 y JavaScript nativo.
             </small>
         </p>
-
-        <p>
-            <a href="#inicio">Volver al inicio</a>
-        </p>
-
+        <p><a href="#inicio">Volver al inicio</a></p>
     </footer>
-
-    <!-- Scripts -->
-    <script src="js/script.js"></script>
-
 </body>
 </html>
