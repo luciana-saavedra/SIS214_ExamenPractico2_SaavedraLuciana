@@ -1,53 +1,83 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
 
+/* =========================
+   1. VARIABLES Y RESET
+========================= */
+
+:root {
+    --color-fondo: #f7f8fc;
+    --color-superficie: #ffffff;
+    --color-texto: #25243a;
+    --color-secundario: #66677a;
+    --color-principal: #6c63ff;
+    --color-principal-hover: #554be8;
+    --color-borde: #e4e5f0;
+    --color-sombra: rgba(36, 32, 90, 0.09);
+    --color-etiqueta: #eeedff;
+    --color-exito: #16794b;
+    --color-error: #b42318;
+
+    --radio: 16px;
+    --ancho-maximo: 1100px;
+    --transicion: 0.25s ease;
+}
+
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
-/* ========================================
-   1. VARIABLES Y CONFIGURACIÓN GENERAL
-======================================== */
-
-:root {
-    --color-fondo: #F5EBE6;
-    --color-principal: #601427;
-    --color-claro: #EFE4D8;
-    --color-rosa: #D45B6E;
-    --color-turquesa: #4A3E56;
-    --color-azul: #B85062;
-    --color-blanco: #FFFFFF;
-    --color-texto: #2B1620;
-
-    --font-family-base: 'Montserrat', Arial, sans-serif;
-    --spacing-unit: 1rem;
-}
-
-* {
-    box-sizing: border-box;
-}
 
 html {
     scroll-behavior: smooth;
-    scroll-padding-top: 20px;
+    scroll-padding-top: 90px;
 }
 
 body {
-    margin: 0;
-    font-family: var(--font-family-base);
-    background-color: var(--color-fondo);
+    min-width: 320px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
     color: var(--color-texto);
-    line-height: 1.6;
+    background: var(--color-fondo);
+    transition:
+        background-color var(--transicion),
+        color var(--transicion);
+}
+
+body.modo_oscuro {
+    --color-fondo: #151522;
+    --color-superficie: #222235;
+    --color-texto: #f1f0ff;
+    --color-secundario: #c0bfd3;
+    --color-principal: #aaa4ff;
+    --color-principal-hover: #c0bbff;
+    --color-borde: #39394f;
+    --color-sombra: rgba(0, 0, 0, 0.2);
+    --color-etiqueta: #34304f;
+    --color-exito: #7be0ac;
+    --color-error: #ff9999;
+}
+
+img,
+video,
+audio {
+    max-width: 100%;
 }
 
 img {
-    max-width: 100%;
     height: auto;
 }
 
 a {
-    overflow-wrap: anywhere;
+    color: var(--color-principal);
+    text-underline-offset: 4px;
+    transition: color var(--transicion);
+}
+
+a:hover {
+    color: var(--color-principal-hover);
 }
 
 button,
@@ -61,707 +91,570 @@ button {
     cursor: pointer;
 }
 
-[hidden] {
-    display: none !important;
-}
-
-/* ========================================
-   2. ENLACE PARA SALTAR AL CONTENIDO
-======================================== */
-
-body > a {
-    display: block;
-    padding: 10px;
-    text-align: center;
-    background-color: var(--color-rosa);
-    color: var(--color-blanco);
-    text-decoration: none;
-    font-weight: 700;
-}
-
-body > a:hover {
-    background-color: var(--color-principal);
-}
-
-/* ========================================
-   3. ENCABEZADO
-======================================== */
-
-header {
-    background-color: var(--color-principal);
-    color: var(--color-blanco);
-    text-align: center;
-    padding: 40px 20px;
-}
-
-header img {
-    width: 180px;
-    height: 180px;
-    object-fit: cover;
-    border-radius: 50%;
-    border: 5px solid var(--color-fondo);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
-}
-
-header h1 {
-    margin: 15px 0 5px;
-    font-size: 2.3rem;
-    letter-spacing: 1px;
-    overflow-wrap: anywhere;
-}
-
-header p {
-    margin: 8px;
-}
-
-header a {
-    color: inherit;
-}
-
-/* ========================================
-   4. NAVEGACIÓN Y MENÚ HAMBURGUESA
-======================================== */
-
-nav {
-    background-color: var(--color-azul);
-    padding: 15px;
-    text-align: center;
-}
-
-#menu-btn {
-    display: block;
-    margin: 0 auto;
-}
-
-#menu-principal {
-    display: none;
-}
-
-#menu-principal.menu-abierto {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
-    margin-top: 12px;
-}
-
-nav a {
-    display: inline-block;
-    color: var(--color-blanco);
-    text-decoration: none;
-    margin: 5px 8px;
-    font-weight: 600;
-}
-
-nav a:hover {
-    color: var(--color-fondo);
-    text-decoration: underline;
-}
-
-nav a:focus-visible,
 button:focus-visible,
-a:focus-visible {
-    outline: 3px solid var(--color-rosa);
-    outline-offset: 3px;
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+    outline: 3px solid var(--color-principal);
+    outline-offset: 4px;
 }
 
-/* ========================================
-   5. CONTENIDO PRINCIPAL
-======================================== */
-
-main {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 25px;
+button:disabled {
+    cursor: not-allowed;
+    opacity: 0.65;
 }
 
-section,
-aside {
-    background-color: var(--color-blanco);
-    margin-bottom: 25px;
-    padding: 25px;
-    border-radius: 15px;
-    box-shadow: 0 4px 12px rgba(128, 0, 32, 0.12);
+::selection {
+    color: #ffffff;
+    background: #6c63ff;
 }
 
-h1,
-h2,
-h3 {
-    font-family: var(--font-family-base);
+/* =========================
+   2. ELEMENTOS GENERALES
+========================= */
+
+.container {
+    width: min(100% - 32px, var(--ancho-maximo));
+    margin-inline: auto;
 }
 
-h1 {
-    font-weight: 700;
+section {
+    padding-block: 64px;
+    scroll-margin-top: 80px;
 }
 
-h2 {
-    color: var(--color-principal);
-    border-bottom: 3px solid var(--color-rosa);
-    padding-bottom: 8px;
-    font-weight: 700;
+section h2 {
+    margin-bottom: 24px;
+    font-size: clamp(1.6rem, 4vw, 2.2rem);
+    line-height: 1.25;
 }
 
-h3 {
-    color: var(--color-azul);
-    font-weight: 600;
+section h3 {
+    margin-bottom: 10px;
+    line-height: 1.35;
 }
 
 p {
-    overflow-wrap: anywhere;
-}
-
-strong {
-    color: var(--color-principal);
-}
-
-mark {
-    background-color: var(--color-rosa);
-    color: var(--color-blanco);
-    padding: 3px 5px;
-    border-radius: 4px;
-}
-
-/* ========================================
-   6. EXPERIENCIA Y VOLUNTARIADO
-======================================== */
-
-#experiencia {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: stretch;
-    gap: 20px;
-}
-
-#experiencia h2 {
-    width: 100%;
-}
-
-#experiencia article {
-    flex: 1 1 280px;
-    min-width: 0;
-    background-color: var(--color-claro);
-    padding: 20px;
-    border-radius: 12px;
-    border-left: 5px solid var(--color-principal);
-}
-
-/* ========================================
-   7. HABILIDADES
-======================================== */
-
-#habilidades {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 20px;
-}
-
-#habilidades h2 {
-    grid-column: 1 / -1;
+    margin-bottom: 14px;
 }
 
 ul,
 ol {
-    padding-left: 25px;
+    padding-left: 24px;
 }
 
 li {
-    margin-bottom: 8px;
+    margin-bottom: 6px;
 }
 
-meter {
-    width: 150px;
-    max-width: 100%;
-    height: 20px;
-    margin-left: 10px;
-}
-
-/* ========================================
-   8. TABLAS
-======================================== */
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 15px;
-}
-
-caption {
-    margin-bottom: 10px;
-    font-weight: 700;
+.etiqueta {
+    display: inline-block;
+    margin: 4px 4px 4px 0;
+    padding: 5px 12px;
+    border-radius: 999px;
     color: var(--color-principal);
+    background: var(--color-etiqueta);
+    font-size: 0.85rem;
+    font-weight: 600;
 }
 
-th,
-td {
-    border: 1px solid var(--color-claro);
-    padding: 12px;
-    text-align: left;
+/* =========================
+   3. ENCABEZADO Y MENÚ
+========================= */
+
+header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 1px solid var(--color-borde);
+    background: var(--color-superficie);
+    box-shadow: 0 3px 14px var(--color-sombra);
+}
+
+.header-contenido {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    min-height: 72px;
+    padding-block: 12px;
+}
+
+.logo {
+    color: var(--color-texto);
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+#menu-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 44px;
+    min-height: 44px;
+    padding: 8px 12px;
+    border: 1px solid var(--color-borde);
+    border-radius: 10px;
+    color: var(--color-texto);
+    background: var(--color-superficie);
+}
+
+#menu-principal {
+    display: none;
+    padding: 12px 16px 20px;
+    border-top: 1px solid var(--color-borde);
+    background: var(--color-superficie);
+}
+
+#menu-principal.menu-abierto {
+    display: block;
+}
+
+#menu-principal ul {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 0;
+    list-style: none;
+}
+
+#menu-principal a {
+    display: block;
+    padding: 8px 4px;
+    font-size: 0.92rem;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+#modo_btn {
+    min-height: 42px;
+    padding: 8px 14px;
+    border: 1px solid var(--color-borde);
+    border-radius: 10px;
+    color: var(--color-texto);
+    background: var(--color-superficie);
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition:
+        background-color var(--transicion),
+        transform var(--transicion);
+}
+
+#modo_btn:hover,
+#menu-btn:hover {
+    transform: translateY(-1px);
+}
+
+/* =========================
+   4. PRESENTACIÓN
+========================= */
+
+#inicio {
+    display: grid;
+    align-items: center;
+    gap: 28px;
+    min-height: 65vh;
+    padding-block: 72px;
+}
+
+#inicio h1 {
+    margin-bottom: 16px;
+    font-size: clamp(2rem, 7vw, 3.5rem);
+    line-height: 1.15;
     overflow-wrap: anywhere;
 }
 
-th {
-    background-color: var(--color-azul);
-    color: var(--color-blanco);
+#inicio p {
+    max-width: 680px;
+    color: var(--color-secundario);
 }
 
-tbody tr:hover {
-    background-color: var(--color-claro);
+#inicio img {
+    width: min(100%, 260px);
+    margin-inline: auto;
+    border: 5px solid var(--color-superficie);
+    border-radius: 50%;
+    box-shadow: 0 8px 30px var(--color-sombra);
+    object-fit: cover;
 }
 
-/* ========================================
-   9. PROYECTOS Y FILTRO
-======================================== */
+.botones-inicio {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 22px;
+}
 
-#proyectos article {
-    background-color: var(--color-claro);
-    padding: 20px;
-    margin-bottom: 15px;
+.boton,
+button.boton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: 11px 18px;
+    border: 1px solid var(--color-principal);
     border-radius: 10px;
-    border-left: 5px solid var(--color-rosa);
+    color: #ffffff;
+    background: #6c63ff;
+    font-weight: 700;
+    text-align: center;
+    text-decoration: none;
+    transition:
+        background-color var(--transicion),
+        transform var(--transicion);
 }
 
-#proyectos article[hidden] {
+.boton:hover,
+button.boton:hover {
+    color: #ffffff;
+    background: #554be8;
+    transform: translateY(-2px);
+}
+
+.boton-secundario,
+button.boton-secundario {
+    color: var(--color-principal);
+    background: transparent;
+}
+
+.boton-secundario:hover,
+button.boton-secundario:hover {
+    color: #ffffff;
+}
+
+/* =========================
+   5. TARJETAS Y EXPERIENCIA
+========================= */
+
+#experiencia,
+#proyectos,
+#habilidades,
+#educacion {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+#experiencia h2,
+#proyectos h2,
+#habilidades h2,
+#educacion h2,
+#experiencia > p,
+#proyectos > p,
+#habilidades > p,
+#educacion > p,
+#filtro-proyectos,
+#resultado-filtro,
+#estado-github,
+#lista-repositorios,
+#formulario_contacto,
+#proyectos .filtros,
+#proyectos .controles {
+    flex-basis: 100%;
+    width: 100%;
+}
+
+#experiencia article,
+#proyectos article,
+#habilidades article,
+#educacion article {
+    flex: 1 1 260px;
+    min-width: 0;
+    padding: 24px;
+    border: 1px solid var(--color-borde);
+    border-radius: var(--radio);
+    background: var(--color-superficie);
+    box-shadow: 0 5px 18px var(--color-sombra);
+    transition:
+        transform var(--transicion),
+        box-shadow var(--transicion);
+}
+
+#experiencia article:hover,
+#proyectos article:hover,
+#habilidades article:hover,
+#educacion article:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px var(--color-sombra);
+}
+
+#experiencia article p,
+#proyectos article p,
+#habilidades article p,
+#educacion article p {
+    color: var(--color-secundario);
+}
+
+#experiencia article[hidden],
+#proyectos article[hidden],
+[hidden] {
     display: none !important;
 }
 
+/* =========================
+   6. FILTROS Y REPOSITORIOS
+========================= */
+
 #filtro-proyectos {
-    margin-bottom: 10px;
+    max-width: 500px;
+    min-height: 46px;
+    padding: 12px 14px;
+    border: 1px solid var(--color-borde);
+    border-radius: 10px;
+    color: var(--color-texto);
+    background: var(--color-superficie);
 }
 
-#resultado-filtro {
+#resultado-filtro,
+#estado-github {
+    color: var(--color-secundario);
+    font-size: 0.92rem;
+}
+
+#lista-repositorios {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding: 0;
+    list-style: none;
+}
+
+#lista-repositorios li {
+    min-width: 0;
+    margin: 0;
+    padding: 18px;
+    border: 1px solid var(--color-borde);
+    border-radius: 12px;
+    background: var(--color-superficie);
+    overflow-wrap: anywhere;
+}
+
+#lista-repositorios a {
+    font-weight: 700;
+}
+
+#lista-repositorios p {
+    margin-top: 8px;
+    color: var(--color-secundario);
+    font-size: 0.9rem;
+}
+
+#reintentar-github {
+    margin-top: 12px;
+}
+
+/* =========================
+   7. FORMULARIO DE CONTACTO
+========================= */
+
+#formulario_contacto {
+    display: grid;
+    gap: 16px;
+    max-width: 700px;
+    padding: 24px;
+    border: 1px solid var(--color-borde);
+    border-radius: var(--radio);
+    background: var(--color-superficie);
+    box-shadow: 0 5px 18px var(--color-sombra);
+}
+
+#formulario_contacto label {
+    display: block;
+    margin-bottom: 6px;
     font-weight: 600;
-    margin-bottom: 15px;
 }
 
-/* ========================================
-   10. IMÁGENES Y MULTIMEDIA
-======================================== */
+#formulario_contacto input,
+#formulario_contacto textarea,
+#formulario_contacto select {
+    width: 100%;
+    min-height: 44px;
+    padding: 11px 12px;
+    border: 1px solid var(--color-borde);
+    border-radius: 9px;
+    color: var(--color-texto);
+    background: var(--color-fondo);
+}
+
+#formulario_contacto textarea {
+    min-height: 130px;
+    resize: vertical;
+}
+
+#formulario_contacto input:invalid:not(:placeholder-shown),
+#formulario_contacto textarea:invalid:not(:placeholder-shown) {
+    border-color: var(--color-error);
+}
+
+#mensaje_formulario {
+    min-height: 24px;
+    font-weight: 600;
+}
+
+.mensaje-exito {
+    color: var(--color-exito);
+}
+
+.mensaje-error {
+    color: var(--color-error);
+}
+
+/* =========================
+   8. DIÁLOGO / MODAL
+========================= */
+
+dialog {
+    width: min(90%, 520px);
+    max-height: 85vh;
+    margin: auto;
+    padding: 28px;
+    border: 1px solid var(--color-borde);
+    border-radius: var(--radio);
+    color: var(--color-texto);
+    background: var(--color-superficie);
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.25);
+    overflow-y: auto;
+}
+
+dialog::backdrop {
+    background: rgba(15, 15, 35, 0.65);
+    backdrop-filter: blur(3px);
+}
+
+dialog h2 {
+    margin-bottom: 12px;
+}
+
+dialog button {
+    margin-top: 12px;
+}
+
+/* =========================
+   9. MULTIMEDIA
+========================= */
 
 figure {
-    margin: 0;
+    margin-block: 20px;
 }
 
 figure img {
     display: block;
-    max-width: 100%;
-    border-radius: 10px;
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 12px;
 }
 
 figcaption {
-    margin-top: 10px;
-    font-style: italic;
-    color: var(--color-azul);
+    margin-top: 8px;
+    color: var(--color-secundario);
+    font-size: 0.9rem;
 }
 
 audio,
 video {
     display: block;
-    max-width: 100%;
-    margin-top: 10px;
-}
-
-/* ========================================
-   11. CONTENIDO COMPLEMENTARIO
-======================================== */
-
-aside {
-    border-left: 5px solid var(--color-rosa);
-}
-
-summary {
-    cursor: pointer;
-    color: var(--color-principal);
-    font-weight: 700;
-}
-
-/* ========================================
-   12. FORMULARIO DE CONTACTO
-======================================== */
-
-form {
-    max-width: 600px;
     width: 100%;
+    margin-block: 12px;
 }
 
-fieldset {
-    min-width: 0;
-    border: 2px solid var(--color-claro);
-    border-radius: 10px;
-    padding: 20px;
-}
-
-legend {
-    font-weight: 700;
-    color: var(--color-principal);
-    padding: 0 8px;
-}
-
-label {
-    font-weight: 600;
-}
-
-input,
-textarea,
-select {
-    display: block;
-    width: 100%;
-    padding: 10px;
-    margin-top: 5px;
-    margin-bottom: 15px;
-    border: 1px solid var(--color-claro);
-    border-radius: 6px;
-    font-family: var(--font-family-base);
-    background-color: var(--color-blanco);
-    color: var(--color-texto);
-}
-
-textarea {
-    resize: vertical;
-}
-
-input:focus,
-textarea:focus,
-select:focus {
-    outline: 2px solid var(--color-principal);
-    outline-offset: 1px;
-    border-color: var(--color-principal);
-}
-
-input[type="checkbox"],
-input[type="radio"] {
-    display: inline-block;
-    width: auto;
-    margin-right: 8px;
-}
-
-[aria-invalid="true"] {
-    outline: 2px solid #B00020;
-    border-color: #B00020;
-}
-
-.mensaje-error {
-    color: #B85062;
-    font-weight: 600;
-}
-
-.mensaje-exito {
-    color: #4A3E56;
-    font-weight: 600;
-}
-
-/* ========================================
-   13. BOTONES
-======================================== */
-
-button {
-    background-color: var(--color-principal);
-    color: var(--color-blanco);
-    border: none;
-    padding: 11px 18px;
-    margin: 0 10px 10px 0;
-    border-radius: 6px;
-    font-family: var(--font-family-base);
-    font-weight: 600;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-}
-
-button:hover {
-    background-color: var(--color-azul);
-}
-
-button:disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
-}
-
-/* ========================================
-   14. REPOSITORIOS DE GITHUB
-======================================== */
-
-#estado-github {
-    overflow-wrap: anywhere;
-}
-
-#estado-github[data-estado="error"] {
-    color: #B00020;
-}
-
-#estado-github[data-estado="success"] {
-    font-weight: 600;
-}
-
-#lista-repositorios a {
-    color: var(--color-principal);
-    font-weight: 600;
-}
-
-#lista-repositorios a:hover {
-    color: var(--color-rosa);
-}
-
-/* ========================================
-   15. VENTANA DE INFORMACIÓN
-======================================== */
-
-dialog {
-    border: none;
-    border-radius: 15px;
-    padding: 30px;
-    width: calc(100% - 32px);
-    max-width: 450px;
-    color: var(--color-texto);
-    background-color: var(--color-blanco);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
-}
-
-dialog::backdrop {
-    background-color: rgba(0, 0, 0, 0.5);
-}
-
-dialog h3 {
-    margin-top: 0;
-}
-
-/* ========================================
-   16. PIE DE PÁGINA
-======================================== */
+/* =========================
+   10. PIE DE PÁGINA
+========================= */
 
 footer {
-    background-color: var(--color-principal);
-    color: var(--color-blanco);
+    margin-top: 32px;
+    padding: 28px 16px;
+    border-top: 1px solid var(--color-borde);
+    color: var(--color-secundario);
+    background: var(--color-superficie);
     text-align: center;
-    padding: 25px;
 }
 
-footer a {
-    color: inherit;
+footer p {
+    margin-bottom: 6px;
 }
 
-/* ========================================
-   17. MODO OSCURO
-======================================== */
-
-body.modo_oscuro {
-    --color-fondo: #1C1720;
-    --color-principal: #3D1022;
-    --color-claro: #322438;
-    --color-rosa: #AA4465;
-    --color-turquesa: #ED8B9E;
-    --color-azul: #6B2D46;
-    --color-blanco: #281F2D;
-    --color-texto: #FCE8EC;
-
-    background-color: var(--color-fondo);
-    color: var(--color-texto);
-}
-
-body.modo_oscuro section,
-body.modo_oscuro aside {
-    background-color: var(--color-blanco);
-}
-
-body.modo_oscuro h2 {
-    color: var(--color-turquesa);
-}
-
-body.modo_oscuro h3 {
-    color: var(--color-rosa);
-}
-
-body.modo_oscuro strong,
-body.modo_oscuro summary {
-    color: var(--color-turquesa);
-}
-
-body.modo_oscuro header,
-body.modo_oscuro header h1,
-body.modo_oscuro header p,
-body.modo_oscuro header a,
-body.modo_oscuro header button {
-    color: #FFFFFF;
-}
-
-body.modo_oscuro header a {
-    text-decoration: underline;
-}
-
-body.modo_oscuro #experiencia article,
-body.modo_oscuro #proyectos article {
-    background-color: var(--color-claro);
-    color: var(--color-texto);
-}
-
-body.modo_oscuro input,
-body.modo_oscuro textarea,
-body.modo_oscuro select {
-    background-color: #322438;
-    color: var(--color-texto);
-    border-color: #6B2D46;
-}
-
-body.modo_oscuro input::placeholder,
-body.modo_oscuro textarea::placeholder {
-    color: #E3C7D2;
-}
-
-body.modo_oscuro th {
-    background-color: #6B2D46;
-}
-
-body.modo_oscuro td {
-    border-color: #6B2D46;
-}
-
-body.modo_oscuro tbody tr:hover {
-    background-color: #322438;
-}
-
-body.modo_oscuro #lista-repositorios a {
-    color: var(--color-turquesa);
-}
-
-body.modo_oscuro .mensaje-error {
-    color: #FF9EAD;
-}
-
-body.modo_oscuro .mensaje-exito {
-    color: #ED8B9E;
-}
-
-body.modo_oscuro dialog {
-    background-color: var(--color-blanco);
-    color: var(--color-texto);
-}
-
-/* ========================================
-   18. TABLETAS
-======================================== */
+/* =========================
+   11. TABLET
+========================= */
 
 @media (min-width: 768px) {
-    main {
-        padding: 30px;
-    }
-
-    #menu-principal.menu-abierto {
-        flex-direction: row;
+    .header-contenido {
         flex-wrap: wrap;
-        justify-content: center;
     }
 
-    #habilidades {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-}
-
-/* ========================================
-   19. ESCRITORIO
-======================================== */
-
-@media (min-width: 1025px) {
     #menu-btn {
         display: none;
     }
 
     #menu-principal,
     #menu-principal.menu-abierto {
-        display: flex;
+        display: block;
+        padding: 0;
+        border: 0;
+    }
+
+    #menu-principal ul {
         flex-direction: row;
         flex-wrap: wrap;
-        justify-content: center;
         align-items: center;
-        margin-top: 0;
+        gap: 12px;
     }
 
-    main {
-        max-width: 1100px;
-        margin-inline: auto;
-    }
-}
-
-/* ========================================
-   20. CELULARES
-======================================== */
-
-@media (max-width: 767px) {
-    header {
-        padding: 30px 15px;
-    }
-
-    header img {
-        width: 130px;
-        height: 130px;
-    }
-
-    header h1 {
-        font-size: 1.8rem;
-    }
-
-    main {
-        padding: 15px;
-    }
-
-    section,
-    aside {
-        padding: 18px;
-    }
-
-    #experiencia {
-        flex-direction: column;
-    }
-
-    #experiencia article {
-        flex: 1 1 auto;
-        width: 100%;
-        min-width: 0;
-    }
-
-    #habilidades {
-        grid-template-columns: minmax(0, 1fr);
-    }
-
-    #habilidades h2 {
-        grid-column: auto;
-    }
-
-    meter {
-        display: block;
-        margin-left: 0;
-        margin-top: 5px;
-    }
-
-    /* Permite desplazar tablas anchas */
-    table {
-        font-size: 0.85rem;
-    }
-
-    th,
-    td {
+    #menu-principal a {
         padding: 8px;
     }
 
-    fieldset {
-        padding: 12px;
+    #inicio {
+        grid-template-columns: minmax(0, 1fr) 260px;
     }
 
-    dialog {
-        padding: 20px;
+    #lista-repositorios {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 }
 
-/* ========================================
-   21. ACCESIBILIDAD: MENOS MOVIMIENTO
-======================================== */
+/* =========================
+   12. ESCRITORIO
+========================= */
 
-@media (prefers-reduced-motion: reduce) {
-    html {
-        scroll-behavior: auto;
+@media (min-width: 1025px) {
+    .header-contenido {
+        flex-wrap: nowrap;
     }
 
+    #menu-principal ul {
+        gap: 18px;
+    }
+
+    #inicio {
+        grid-template-columns: minmax(0, 1fr) 320px;
+        gap: 60px;
+        min-height: 75vh;
+    }
+
+    #inicio img {
+        width: 300px;
+    }
+
+    #lista-repositorios {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    section {
+        padding-block: 84px;
+    }
+}
+
+/* =========================
+   13. MOVIMIENTO REDUCIDO
+========================= */
+
+@media (prefers-reduced-motion: reduce) {
     *,
     *::before,
     *::after {
+        scroll-behavior: auto !important;
         animation-duration: 0.01ms !important;
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
