@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hoja de Vida | Luciana Saavedra Ayarde</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+
+    <!-- Enlace de accesibilidad -->
+    <a href="#contenido-principal">Saltar al contenido principal</a>
+
+    <!-- Encabezado personal -->
+    <header>
+        <picture>
+            <source media="(min-width: 768px)" srcset="assets/images/foto.jpeg">
+            <img src="assets/images/foto.jpeg"
+                 alt="Fotografía profesional de Luciana Saavedra Ayarde"
+                 width="180"
+                 height="180">
+        </picture>
+
+        <h1>Luciana Saavedra Ayarde</h1>
+
+        <p>Estudiante de Ingeniería de Sistemas</p>
+
+        <p>
+            <em>
+                Apasionada por la tecnología, la innovación y el aprendizaje continuo.
+            </em>
+        </p>
+
+        <address>
+            La Paz, Bolivia<br>
+            Correo electrónico:
+            <a href="mailto:scarlet.saavedra@ucb.edu.bo">
+                scarlet.saavedra@ucb.edu.bo
+            </a><br>
+            Teléfono: +591 77706442
+        </address>
+
+        <p>
+            <a href="assets/documents/cv-luciana-saavedra.pdf"
+               download="CV_Luciana_Saavedra.pdf">
+                📄 Descargar CV en PDF
+            </a>
+        </p>
+
+        <button id="modo_btn" type="button">
+            🌙 Cambiar modo
+        </button>
+    </header>
+
+    <hr>
+
+    <!-- Navegación principal -->
+    <nav aria-label="Navegación principal">
+        <a href="#perfil">Perfil</a> |
+        <a href="#formacion">Formación</a> |
+        <a href="#experiencia">Experiencia</a> |
+        <a href="#habilidades">Habilidades</a> |
+        <a href="#certificaciones">Cursos</a> |
+        <a href="#idiomas">Idiomas</a> |
+        <a href="#proyectos">Proyectos</a> |
+        <a href="#multimedia">Multimedia</a> |
+        <a href="#contacto">Contacto</a>
+    </nav>
+
+    <hr>
+
+    <!-- Contenido principal -->
+    <main id="contenido-principal">
+
+        <!-- Perfil profesional -->
+        <section id="perfil" aria-labelledby="titulo-perfil">
+            <h2 id="titulo-perfil">Perfil profesional</h2>
+
+            <p>
+                Soy estudiante de <strong>Ingeniería de Sistemas</strong>
+                con alto interés en la programación, la arquitectura de software
+                y el desarrollo de soluciones tecnológicas innovadoras.
+            </p>
+
+            <p>
+                Entre mis principales fortalezas destacan la capacidad para
+                <mark>trabajar en equipo y aprender constantemente</mark>,
+                adaptándome a nuevos lenguajes y entornos de desarrollo estructurados.
+            </p>
+
+            <p>
+                Mi objetivo profesional es consolidar mis competencias técnicas
+                en desarrollo web y programación orientada a objetos, colaborando
+                en proyectos que generen un impacto positivo.
+            </p>
+        </section>
+
+        <!-- Formación académica -->
+        <section id="formacion" aria-labelledby="titulo-formacion">
+            <h2 id="titulo-formacion">Formación académica</h2>
+
+            <article>
+                <h3>Ingeniería de Sistemas</h3>
+
+                <p>
+                    <strong>Universidad Católica Boliviana "San Pablo"</strong>
+                </p>
+
+                <p>
+                    Inicio: <time datetime="2025">2025</time> -
+                    Estado actual: En curso (<time datetime="2026">2026</time>)
+                </p>
+
+                <p>Grado: Licenciatura en proceso</p>
+
+                <p>
+                    <label for="progreso-carrera">Progreso de la carrera:</label><br>
+                    <progress id="progreso-carrera" max="100" value="35">
+                        35%
+                    </progress>
+                    35% completado
+                </p>
+            </article>
+        </section>
+
+        <!-- Experiencia profesional o proyectos relevantes -->
+        <section id="experiencia" aria-labelledby="titulo-experiencia">
+            <h2 id="titulo-experiencia">Experiencia y proyectos de liderazgo</h2>
+
+            <article>
+                <h3>Participante activa - Computer Society</h3>
+
+                <p>
+                    <strong>Institución:</strong> IEEE Computer Society UCB
+                </p>
+
+                <p>
+                    <time datetime="2026-01">Enero 2026</time> - Presente
+                </p>
+
+                <p>
+                    Participación en la logística, planificación y apoyo en talleres
+                    académicos y actividades de divulgación tecnológica organizadas
+                    para el estudiantado.
+                </p>
+
+                <p>
+                    <strong>Principal logro:</strong>
+                    Integración exitosa en equipos multidisciplinarios de trabajo académico.
+                </p>
+            </article>
+
+            <article>
+                <h3>Coordinadora de proyecto - NeuroCinema</h3>
+
+                <p>
+                    <strong>Institución:</strong> Computer Society UCB
+                </p>
+
+                <p>
+                    <time datetime="2026-02">Febrero 2026</time> - Presente
+                </p>
+
+                <p>
+                    Coordinación ejecutiva de un espacio interdisciplinario que vincula
+                    cine, arte y principios de neurociencia para la comunidad universitaria.
+                </p>
+
+                <p>
+                    <strong>Principal logro:</strong>
+                    Gestión del cronograma y difusión del proyecto a nivel institucional.
+                </p>
+            </article>
+
+            <article>
+                <h3>Desarrolladora Junior en Proyectos Académicos</h3>
+
+                <p>
+                    <strong>Institución:</strong>
+                    Universidad Católica Boliviana "San Pablo"
+                </p>
+
+                <p>
+                    <time datetime="2025-08">Agosto 2025</time> -
+                    <time datetime="2025-12">Diciembre 2025</time>
+                </p>
+
+                <p>
+                    Diseño de algoritmos, implementación de persistencia de datos
+                    en ficheros .txt y desarrollo de sistemas básicos en Java.
+                </p>
+
+                <p>
+                    <strong>Principal logro:</strong>
+                    Implementación limpia de principios de programación orientada a objetos (POO).
+                </p>
+            </article>
+        </section>
+
+        <!-- Habilidades técnicas -->
+        <section id="habilidades" aria-labelledby="titulo-habilidades">
+            <h2 id="titulo-habilidades">Habilidades técnicas</h2>
+
+            <div>
+                <h3>Lenguajes y tecnologías</h3>
+
+                <ul>
+                    <li>
+                        HTML5
+                        <meter min="0" max="100" value="85" optimum="90">85%</meter>
+                    </li>
+
+                    <li>
+                        Java
+                        <meter min="0" max="100" value="75" optimum="90">75%</meter>
+                    </li>
+
+                    <li>
+                        CSS3
+                        <meter min="0" max="100" value="65" optimum="90">65%</meter>
+                    </li>
+
+                    <li>
+                        PHP
+                        <meter min="0" max="100" value="50" optimum="90">50%</meter>
+                    </li>
+
+                    <li>
+                        SQL
+                        <meter min="0" max="100" value="50" optimum="90">50%</meter>
+                    </li>
+                </ul>
+            </div>
+
+            <div>
+                <h3>Herramientas de desarrollo</h3>
+
+                <ul>
+                    <li>Visual Studio Code</li>
+                    <li>GitHub y Git</li>
+                    <li>Docker</li>
+                </ul>
+            </div>
+
+            <div>
+                <h3>Habilidades profesionales</h3>
+
+                <ol>
+                    <li>Trabajo colaborativo y en equipo</li>
+                    <li>Planificación y organización académica</li>
+                    <li>Resolución de problemas y pensamiento lógico</li>
+                </ol>
+            </div>
+        </section>
+
+        <!-- Cursos y certificaciones -->
+        <section id="certificaciones" aria-labelledby="titulo-certificaciones">
+            <h2 id="titulo-certificaciones">Cursos y certificaciones</h2>
+
+            <ul>
+                <li>
+                    Neurotech Bootcamp -
+                    <time datetime="2025-11">Noviembre 2025</time>
+                </li>
+
+                <li>
+                    Taller de Desarrollo Web y Buenas Prácticas -
+                    <time datetime="2025-09">Septiembre 2025</time>
+                </li>
+
+                <li>
+                    Jornadas de Divulgación Científica y Sistemas -
+                    <time datetime="2026-03">Marzo 2026</time>
+                </li>
+            </ul>
+        </section>
+
+        <!-- Idiomas -->
+        <section id="idiomas" aria-labelledby="titulo-idiomas">
+            <h2 id="titulo-idiomas">Idiomas</h2>
+
+            <table>
+                <caption>Nivel de dominio de idiomas</caption>
+
+                <thead>
+                    <tr>
+                        <th scope="col">Idioma</th>
+                        <th scope="col">Lectura</th>
+                        <th scope="col">Escritura</th>
+                        <th scope="col">Conversación</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <th scope="row">Español</th>
+                        <td>Avanzado</td>
+                        <td>Avanzado</td>
+                        <td>Nativo</td>
+                    </tr>
+
+                    <tr>
+                        <th scope="row">Inglés</th>
+                        <td>Intermedio</td>
+                        <td>Intermedio</td>
+                        <td>Intermedio</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Proyectos destacados -->
+        <section id="proyectos" aria-labelledby="titulo-proyectos">
+            <h2 id="titulo-proyectos">Proyectos destacados</h2>
+
+            <article>
+                <h3>VaJeiNa Planner</h3>
+
+                <p>
+                    Aplicación web proyectada como organizador de tareas y eventos
+                    académicos para mejorar la productividad estudiantil.
+                </p>
+
+                <p>
+                    <strong>Tecnologías utilizadas:</strong>
+                    HTML5, CSS3, JavaScript, PHP
+                </p>
+
+                <p>
+                    <strong>Rol desempeñado:</strong>
+                    Desarrolladora de interfaz y estructura
+                </p>
+
+                <p>
+                    <strong>Resultado obtenido:</strong>
+                    Prototipo funcional con validación de formularios y almacenamiento básico.
+                </p>
+
+                <p>
+                    <a href="https://github.com/luciana-saavedra"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                        Ver repositorio en GitHub
+                    </a>
+                </p>
+            </article>
+
+            <article>
+                <h3>NeuroCinema - Difusión Interdisciplinaria</h3>
+
+                <p>
+                    Iniciativa enfocada en conectar el análisis cinematográfico
+                    con conceptos clave de neurociencia.
+                </p>
+
+                <p>
+                    <strong>Recursos utilizados:</strong>
+                    Material audiovisual, guiones técnicos, presentaciones interactivas.
+                </p>
+
+                <p>
+                    <strong>Rol desempeñado:</strong>
+                    Coordinadora general de contenido
+                </p>
+
+                <p>
+                    <strong>Resultado obtenido:</strong>
+                    Realización de sesiones de debate y alta participación universitaria.
+                </p>
+            </article>
+        </section>
+
+        <!-- Portafolio multimedia -->
+        <section id="multimedia" aria-labelledby="titulo-multimedia">
+            <h2 id="titulo-multimedia">Portafolio multimedia</h2>
+
+            <figure>
+                <img src="assets/images/proyecto.jpeg"
+                     alt="Captura de pantalla de la interfaz del proyecto VaJeiNa Planner"
+                     width="400">
+
+                <figcaption>
+                    Figura 1: Vista previa de la estructura del proyecto académico.
+                </figcaption>
+            </figure>
+
+            <h3>Presentación profesional en audio</h3>
+
+            <audio controls aria-label="Audio de presentación personal y resumen ejecutivo">
+                <source src="assets/audio/presentacion.mp3" type="audio/mpeg">
+                Tu navegador no soporta el elemento de audio nativo HTML5.
+            </audio>
+
+            <h3>Video del proyecto</h3>
+
+            <video width="400"
+                   controls
+                   aria-label="Demostración audiovisual de proyectos académicos">
+
+                <source src="assets/video/proyecto.mp4" type="video/mp4">
+
+                <track src="assets/video/subtitulos.vtt"
+                       kind="subtitles"
+                       srclang="es"
+                       label="Español">
+
+                Tu navegador no soporta el elemento de video nativo HTML5.
+            </video>
+        </section>
+
+        <!-- Información adicional -->
+        <aside aria-labelledby="titulo-adicional">
+            <h2 id="titulo-adicional">Información adicional</h2>
+
+            <p>
+                Interés constante en la convergencia entre la ciencia de la computación,
+                la innovación social y las artes visuales.
+            </p>
+
+            <details>
+                <summary>
+                    Haz clic aquí para conocer más intereses y actividades extraacadémicas
+                </summary>
+
+                <p>
+                    Me apasiona la lectura técnica, el análisis de cine independiente
+                    y la participación activa en comunidades académicas como IEEE Computer Society.
+                </p>
+            </details>
+        </aside>
+
+        <!-- Diálogo -->
+        <dialog id="modal-info">
+            <h3>Aviso de disponibilidad</h3>
+
+            <p>
+                Actualmente me encuentro disponible para proyectos académicos y pasantías parciales.
+            </p>
+
+            <form method="dialog">
+                <button type="submit">Cerrar diálogo</button>
+            </form>
+        </dialog>
+
+        <p>
+            <button id="btn-disponibilidad" type="button">
+                Ver disponibilidad actual
+            </button>
+        </p>
+
+        <!-- Formulario de contacto -->
+        <section id="contacto" aria-labelledby="titulo-contacto">
+
+            <h2 id="titulo-contacto">Formulario de contacto</h2>
+
+            <p id="ayuda-contacto">
+                Utiliza este formulario para enviarme una consulta directa.
+                Todos los campos marcados son obligatorios.
+            </p>
+
+            <form id="formulario_contacto"
+                  action="#"
+                  method="post"
+                  aria-describedby="ayuda-contacto">
+
+                <fieldset>
+
+                    <legend>Datos personales y mensaje</legend>
+
+                    <p>
+                        <label for="nombre">Nombre completo:</label><br>
+
+                        <input type="text"
+                               id="nombre"
+                               name="nombre"
+                               placeholder="Ej. Luciana Saavedra"
+                               minlength="3"
+                               maxlength="50"
+                               required>
+                    </p>
+
+                    <p>
+                        <label for="correo">Correo electrónico:</label><br>
+
+                        <input type="email"
+                               id="correo"
+                               name="correo"
+                               placeholder="scarlet.saavedra@ucb.edu.bo"
+                               required>
+                    </p>
+
+                    <p>
+                        <label for="telefono">Teléfono de contacto:</label><br>
+
+                        <input type="tel"
+                               id="telefono"
+                               name="telefono"
+                               placeholder="+591 77706442"
+                               pattern="[+0-9 ]{8,15}"
+                               required>
+                    </p>
+
+                    <p>
+                        <label for="motivo">Motivo de contacto:</label><br>
+
+                        <select id="motivo" name="motivo" required>
+                            <option value="">Seleccione una opción</option>
+                            <option value="proyecto">Colaboración en proyecto</option>
+                            <option value="academico">Consulta académica</option>
+                            <option value="profesional">
+                                Oportunidad profesional / Pasantía
+                            </option>
+                            <option value="otro">Otro</option>
+                        </select>
+                    </p>
+
+                    <p>
+                        <label for="mensaje">Mensaje:</label><br>
+
+                        <textarea id="mensaje"
+                                  name="mensaje"
+                                  rows="5"
+                                  cols="40"
+                                  minlength="10"
+                                  maxlength="500"
+                                  placeholder="Escribe tu mensaje aquí..."
+                                  required></textarea>
+                    </p>
+
+                    <p>
+                        <input type="checkbox"
+                               id="aceptacion"
+                               name="aceptacion"
+                               required>
+
+                        <label for="aceptacion">
+                            Acepto el uso de mis datos exclusivamente para responder a esta solicitud.
+                        </label>
+                    </p>
+
+                    <button type="submit">Enviar mensaje</button>
+                    <button type="reset">Limpiar formulario</button>
+
+                    <p id="mensaje_formulario" aria-live="polite"></p>
+
+                </fieldset>
+            </form>
+        </section>
+
+    </main>
+
+    <hr>
+
+    <!-- Pie de página -->
+    <footer>
+        <p>
+            2026 Luciana Saavedra Ayarde — Todos los derechos reservados.
+        </p>
+
+        <p>
+            <small>
+                Hoja de vida desarrollada en HTML5 Nativo
+            </small>
+        </p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="js/script.js"></script>
+
+</body>
+</html>
