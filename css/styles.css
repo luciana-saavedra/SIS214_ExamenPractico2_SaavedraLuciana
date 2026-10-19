@@ -435,3 +435,95 @@ dialog::backdrop {
 dialog h3 {
     margin-top: 0;
 }
+
+
+/* Tokens de diseño requeridos */
+:root {
+    --font-family-base: 'Montserrat', Arial, sans-serif;
+    --spacing-unit: 1rem;
+}
+
+/* Reset universal */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-family-base);
+}
+
+section, aside {
+    margin-bottom: var(--spacing-unit);
+}
+
+/* El menú aparece como hamburguesa hasta escritorio */
+#menu-btn {
+    display: block;
+    margin: 0 auto;
+}
+
+#menu-principal {
+    display: none;
+}
+
+#menu-principal.menu-abierto {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+#proyectos article[hidden] {
+    display: none !important;
+}
+
+[aria-invalid="true"] {
+    outline: 2px solid #b00020;
+    border-color: #b00020;
+}
+
+#estado-github[data-estado="error"] {
+    color: #b00020;
+}
+
+#estado-github[data-estado="success"] {
+    font-weight: 600;
+}
+
+/* Tablet: 768px a 1024px */
+@media (min-width: 768px) {
+    main {
+        padding: 2rem;
+    }
+
+    #menu-principal.menu-abierto {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    #habilidades {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+/* Escritorio: más de 1024px */
+@media (min-width: 1025px) {
+    #menu-btn {
+        display: none;
+    }
+
+    #menu-principal,
+    #menu-principal.menu-abierto {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    main {
+        max-width: 1100px;
+        margin-inline: auto;
+    }
+}

@@ -57,19 +57,38 @@
     <hr>
 
     <!-- Navegación principal -->
-    <nav aria-label="Navegación principal">
-        <a href="#perfil">Perfil</a> |
-        <a href="#formacion">Formación</a> |
-        <a href="#experiencia">Experiencia</a> |
-        <a href="#habilidades">Habilidades</a> |
-        <a href="#certificaciones">Cursos</a> |
-        <a href="#idiomas">Idiomas</a> |
-        <a href="#proyectos">Proyectos</a> |
-        <a href="#multimedia">Multimedia</a> |
+    <button
+        id="menu-btn"
+        type="button"
+        aria-label="Abrir menú de navegación"
+        aria-expanded="false"
+        aria-controls="menu-principal">
+        ☰ Menú
+    </button>
+
+    <nav id="menu-principal" aria-label="Navegación principal">
+        <a href="#perfil">Perfil</a>
+        <a href="#formacion">Formación</a>
+        <a href="#experiencia">Experiencia</a>
+        <a href="#habilidades">Habilidades</a>
+        <a href="#proyectos">Proyectos</a>
+        <a href="#repositorios">GitHub</a>
         <a href="#contacto">Contacto</a>
     </nav>
 
     <hr>
+
+    
+    <section id="repositorios" aria-labelledby="titulo-repositorios">
+        <h2 id="titulo-repositorios">Mis repositorios de GitHub</h2>
+        <p id="estado-github" role="status" aria-live="polite">
+            Preparando consulta...
+        </p>
+        <ul id="lista-repositorios"></ul>
+        <button id="reintentar-github" type="button">
+            Volver a intentar
+        </button>
+    </section>
 
     <!-- Contenido principal -->
     <main id="contenido-principal">
@@ -128,7 +147,15 @@
         <!-- Experiencia profesional o proyectos relevantes -->
         <section id="experiencia" aria-labelledby="titulo-experiencia">
             <h2 id="titulo-experiencia">Experiencia y proyectos de liderazgo</h2>
+            <label for="filtro-proyectos">Buscar proyecto:</label>
+        <input
+        type="search"
+        id="filtro-proyectos"
+        placeholder="Escribe un nombre o tecnología"
+        aria-label="Filtrar proyectos">
 
+        <p id="resultado-filtro" aria-live="polite">
+        </p>
             <article>
                 <h3>Participante activa - Computer Society</h3>
 
