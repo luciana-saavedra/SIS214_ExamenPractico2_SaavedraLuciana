@@ -59,10 +59,6 @@ hoja-vida/
     │   └── proyecto.jpg
     ├── video/
     │   └── proyecto.mp4
-    ├── audio/
-    │   └── presentacion.mp3
-    ├── captions/
-    │   └── proyecto.vtt
     └── documents/
         └── cv-luciana-saavedra.pdf
 ```
@@ -134,14 +130,6 @@ Los cambios se organizan por tareas, como documentación, estilos, funcionalidad
 3. Verificar que las rutas de CSS, JavaScript e imágenes coincidan con la estructura de carpetas.
 4. Abrir `index.html` en un navegador. Para una experiencia de desarrollo más cómoda, se puede utilizar la extensión Live Server de Visual Studio Code.
 5. Comprobar el funcionamiento de los controles, el formulario, los recursos multimedia y la consulta de GitHub.
-
-## Publicación
-
-El proyecto puede publicarse mediante GitHub Pages, configurando la rama y la carpeta donde se encuentra `index.html`.
-
-**Repositorio:** [Agregar aquí el enlace al repositorio del proyecto](https://github.com/)
-
-**Sitio publicado:** [Agregar aquí el enlace de GitHub Pages](https://pages.github.com/)
 
 ## Autora
 
