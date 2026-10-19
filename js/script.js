@@ -22,9 +22,7 @@ function actualizarBotonTema() {
 
 try {
     const temaGuardado = localStorage.getItem(CLAVE_TEMA);
-    const preferencias = temaGuardado
-        ? JSON.parse(temaGuardado)
-        : {};
+    const preferencias = temaGuardado ? JSON.parse(temaGuardado) : {};
 
     if (preferencias.tema === "oscuro") {
         document.body.classList.add("modo_oscuro");
@@ -75,7 +73,8 @@ function cerrarMenu() {
 
 if (botonMenu && menuPrincipal) {
     botonMenu.addEventListener("click", () => {
-        const estaAbierto = menuPrincipal.classList.toggle("menu-abierto");
+        const estaAbierto =
+            menuPrincipal.classList.toggle("menu-abierto");
 
         botonMenu.setAttribute("aria-expanded", String(estaAbierto));
         botonMenu.setAttribute(
@@ -113,24 +112,26 @@ if (filtroExperiencia && resultadoFiltro && seccionExperiencia) {
             .trim()
             .toLocaleLowerCase("es");
 
-        const tarjetasCoincidentes = tarjetasExperiencia.filter((tarjeta) => {
-            const contenido = tarjeta.textContent.toLocaleLowerCase("es");
-            return contenido.includes(busqueda);
-        });
+        let cantidad = 0;
 
         tarjetasExperiencia.forEach((tarjeta) => {
-            tarjeta.hidden = !tarjetasCoincidentes.includes(tarjeta);
+            const contenido = tarjeta.textContent.toLocaleLowerCase("es");
+            const coincide = contenido.includes(busqueda);
+
+            tarjeta.hidden = !coincide;
+
+            if (coincide) {
+                cantidad++;
+            }
         });
 
-        const cantidad = tarjetasCoincidentes.length;
-
-        if (cantidad === 0) {
-            resultadoFiltro.textContent =
-                "No se encontraron resultados. Prueba con otra palabra.";
-        } else {
-            resultadoFiltro.textContent =
-                `${cantidad} ${cantidad === 1 ? "resultado encontrado" : "resultados encontrados"}.`;
-        }
+        resultadoFiltro.textContent = cantidad === 0
+            ? "No se encontraron resultados. Prueba con otra palabra."
+            : `${cantidad} ${
+                cantidad === 1
+                    ? "resultado encontrado"
+                    : "resultados encontrados"
+            }.`;
     }
 
     filtroExperiencia.addEventListener("input", filtrarExperiencia);
@@ -140,8 +141,11 @@ if (filtroExperiencia && resultadoFiltro && seccionExperiencia) {
    4. VALIDACIÓN DEL FORMULARIO
 ========================= */
 
-const formularioContacto = document.getElementById("formulario_contacto");
-const mensajeFormulario = document.getElementById("mensaje_formulario");
+const formularioContacto =
+    document.getElementById("formulario_contacto");
+
+const mensajeFormulario =
+    document.getElementById("mensaje_formulario");
 
 if (formularioContacto && mensajeFormulario) {
     formularioContacto.addEventListener("submit", (evento) => {
@@ -152,35 +156,40 @@ if (formularioContacto && mensajeFormulario) {
 
             mensajeFormulario.textContent =
                 "Revisa los campos obligatorios antes de continuar.";
+
             mensajeFormulario.className = "mensaje-error";
             return;
         }
 
         mensajeFormulario.textContent =
             "¡Formulario validado correctamente! Esta demostración no envía mensajes a un servidor.";
-        mensajeFormulario.className = "mensaje-exito";
 
+        mensajeFormulario.className = "mensaje-exito";
         formularioContacto.reset();
     });
 
-    formularioContacto.querySelectorAll("input, textarea, select").forEach((campo) => {
-        campo.addEventListener("input", () => {
-            mensajeFormulario.textContent = "";
-            mensajeFormulario.className = "";
-        });
+    formularioContacto
+        .querySelectorAll("input, textarea, select")
+        .forEach((campo) => {
+            campo.addEventListener("input", () => {
+                mensajeFormulario.textContent = "";
+                mensajeFormulario.className = "";
+            });
 
-        campo.addEventListener("change", () => {
-            mensajeFormulario.textContent = "";
-            mensajeFormulario.className = "";
+            campo.addEventListener("change", () => {
+                mensajeFormulario.textContent = "";
+                mensajeFormulario.className = "";
+            });
         });
-    });
 }
 
 /* =========================
    5. MODAL DE DISPONIBILIDAD
 ========================= */
 
-const botonDisponibilidad = document.getElementById("btn-disponibilidad");
+const botonDisponibilidad =
+    document.getElementById("btn-disponibilidad");
+
 const modalInfo = document.getElementById("modal-info");
 
 if (botonDisponibilidad && modalInfo) {
@@ -190,7 +199,7 @@ if (botonDisponibilidad && modalInfo) {
         }
     });
 
-    // Permite cerrar el diálogo haciendo clic fuera de su contenido.
+    // Permite cerrar el diálogo al pulsar fuera del contenido.
     modalInfo.addEventListener("click", (evento) => {
         if (evento.target === modalInfo) {
             modalInfo.close();
@@ -206,7 +215,8 @@ const usuarioGitHub = "luciana-saavedra";
 
 const estadoGitHub = document.getElementById("estado-github");
 const listaRepositorios = document.getElementById("lista-repositorios");
-const botonReintentarGitHub = document.getElementById("reintentar-github");
+const botonReintentarGitHub =
+    document.getElementById("reintentar-github");
 
 async function cargarRepositorios() {
     if (!estadoGitHub || !listaRepositorios) return;
@@ -218,7 +228,8 @@ async function cargarRepositorios() {
         botonReintentarGitHub.disabled = true;
     }
 
-    const url = `https://api.github.com/users/${usuarioGitHub}/repos?sort=updated&per_page=10`;
+    const url =
+        `https://api.github.com/users/${usuarioGitHub}/repos?sort=updated&per_page=10`;
 
     try {
         const respuesta = await fetch(url);
@@ -251,16 +262,7 @@ async function cargarRepositorios() {
             (repositorio) => !repositorio.fork
         );
 
-        const repositoriosActualizados = repositoriosPropios.map(
-            (repositorio) => ({
-                nombre: repositorio.name,
-                descripcion: repositorio.description || "Sin descripción disponible.",
-                enlace: repositorio.html_url,
-                lenguaje: repositorio.language || "No especificado"
-            })
-        );
-
-        if (repositoriosActualizados.length === 0) {
+        if (repositoriosPropios.length === 0) {
             estadoGitHub.textContent =
                 "No se encontraron repositorios propios para mostrar.";
             return;
@@ -268,20 +270,22 @@ async function cargarRepositorios() {
 
         const fragmento = document.createDocumentFragment();
 
-        repositoriosActualizados.forEach((repositorio) => {
+        repositoriosPropios.forEach((repositorio) => {
             const tarjeta = document.createElement("li");
 
             const enlace = document.createElement("a");
-            enlace.href = repositorio.enlace;
+            enlace.href = repositorio.html_url;
             enlace.target = "_blank";
             enlace.rel = "noopener noreferrer";
-            enlace.textContent = repositorio.nombre;
+            enlace.textContent = repositorio.name;
 
             const descripcion = document.createElement("p");
-            descripcion.textContent = repositorio.descripcion;
+            descripcion.textContent =
+                repositorio.description || "Sin descripción disponible.";
 
             const lenguaje = document.createElement("p");
-            lenguaje.textContent = `Lenguaje: ${repositorio.lenguaje}`;
+            lenguaje.textContent =
+                `Lenguaje: ${repositorio.language || "No especificado"}`;
 
             tarjeta.append(enlace, descripcion, lenguaje);
             fragmento.appendChild(tarjeta);
@@ -290,7 +294,7 @@ async function cargarRepositorios() {
         listaRepositorios.appendChild(fragmento);
 
         estadoGitHub.textContent =
-            `Se cargaron ${repositoriosActualizados.length} repositorios.`;
+            `Se cargaron ${repositoriosPropios.length} repositorios propios.`;
     } catch (error) {
         console.error("Error al cargar repositorios:", error);
 
