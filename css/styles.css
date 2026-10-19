@@ -1,4 +1,9 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+
+/* ========================================
+   1. VARIABLES Y CONFIGURACIÓN GENERAL
+======================================== */
 
 :root {
     --color-fondo: #F5EBE6;
@@ -9,6 +14,9 @@
     --color-azul: #B85062;
     --color-blanco: #FFFFFF;
     --color-texto: #2B1620;
+
+    --font-family-base: 'Montserrat', Arial, sans-serif;
+    --spacing-unit: 1rem;
 }
 
 * {
@@ -17,15 +25,44 @@
 
 html {
     scroll-behavior: smooth;
+    scroll-padding-top: 20px;
 }
 
 body {
-    font-family: 'Montserrat', Arial, sans-serif;
     margin: 0;
+    font-family: var(--font-family-base);
     background-color: var(--color-fondo);
     color: var(--color-texto);
     line-height: 1.6;
 }
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+a {
+    overflow-wrap: anywhere;
+}
+
+button,
+input,
+textarea,
+select {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+[hidden] {
+    display: none !important;
+}
+
+/* ========================================
+   2. ENLACE PARA SALTAR AL CONTENIDO
+======================================== */
 
 body > a {
     display: block;
@@ -34,12 +71,16 @@ body > a {
     background-color: var(--color-rosa);
     color: var(--color-blanco);
     text-decoration: none;
-    font-weight: bold;
+    font-weight: 700;
 }
 
 body > a:hover {
     background-color: var(--color-principal);
 }
+
+/* ========================================
+   3. ENCABEZADO
+======================================== */
 
 header {
     background-color: var(--color-principal);
@@ -58,14 +99,23 @@ header img {
 }
 
 header h1 {
-    margin-bottom: 5px;
+    margin: 15px 0 5px;
     font-size: 2.3rem;
     letter-spacing: 1px;
+    overflow-wrap: anywhere;
 }
 
 header p {
     margin: 8px;
 }
+
+header a {
+    color: inherit;
+}
+
+/* ========================================
+   4. NAVEGACIÓN Y MENÚ HAMBURGUESA
+======================================== */
 
 nav {
     background-color: var(--color-azul);
@@ -73,21 +123,50 @@ nav {
     text-align: center;
 }
 
+#menu-btn {
+    display: block;
+    margin: 0 auto;
+}
+
+#menu-principal {
+    display: none;
+}
+
+#menu-principal.menu-abierto {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    margin-top: 12px;
+}
+
 nav a {
+    display: inline-block;
     color: var(--color-blanco);
     text-decoration: none;
-    margin: 8px;
+    margin: 5px 8px;
     font-weight: 600;
-    display: inline-block;
 }
 
 nav a:hover {
     color: var(--color-fondo);
+    text-decoration: underline;
 }
+
+nav a:focus-visible,
+button:focus-visible,
+a:focus-visible {
+    outline: 3px solid var(--color-rosa);
+    outline-offset: 3px;
+}
+
+/* ========================================
+   5. CONTENIDO PRINCIPAL
+======================================== */
 
 main {
     max-width: 1000px;
-    margin: auto;
+    margin: 0 auto;
     padding: 25px;
 }
 
@@ -103,7 +182,7 @@ aside {
 h1,
 h2,
 h3 {
-    font-family: 'Montserrat', Arial, sans-serif;
+    font-family: var(--font-family-base);
 }
 
 h1 {
@@ -122,6 +201,10 @@ h3 {
     font-weight: 600;
 }
 
+p {
+    overflow-wrap: anywhere;
+}
+
 strong {
     color: var(--color-principal);
 }
@@ -133,9 +216,14 @@ mark {
     border-radius: 4px;
 }
 
+/* ========================================
+   6. EXPERIENCIA Y VOLUNTARIADO
+======================================== */
+
 #experiencia {
     display: flex;
     flex-wrap: wrap;
+    align-items: stretch;
     gap: 20px;
 }
 
@@ -144,17 +232,21 @@ mark {
 }
 
 #experiencia article {
-    flex: 1;
-    min-width: 250px;
+    flex: 1 1 280px;
+    min-width: 0;
     background-color: var(--color-claro);
     padding: 20px;
     border-radius: 12px;
     border-left: 5px solid var(--color-principal);
 }
 
+/* ========================================
+   7. HABILIDADES
+======================================== */
+
 #habilidades {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 20px;
 }
 
@@ -173,9 +265,14 @@ li {
 
 meter {
     width: 150px;
+    max-width: 100%;
     height: 20px;
     margin-left: 10px;
 }
+
+/* ========================================
+   8. TABLAS
+======================================== */
 
 table {
     width: 100%;
@@ -185,7 +282,7 @@ table {
 
 caption {
     margin-bottom: 10px;
-    font-weight: bold;
+    font-weight: 700;
     color: var(--color-principal);
 }
 
@@ -194,6 +291,7 @@ td {
     border: 1px solid var(--color-claro);
     padding: 12px;
     text-align: left;
+    overflow-wrap: anywhere;
 }
 
 th {
@@ -201,9 +299,13 @@ th {
     color: var(--color-blanco);
 }
 
-tr:hover {
+tbody tr:hover {
     background-color: var(--color-claro);
 }
+
+/* ========================================
+   9. PROYECTOS Y FILTRO
+======================================== */
 
 #proyectos article {
     background-color: var(--color-claro);
@@ -213,11 +315,29 @@ tr:hover {
     border-left: 5px solid var(--color-rosa);
 }
 
+#proyectos article[hidden] {
+    display: none !important;
+}
+
+#filtro-proyectos {
+    margin-bottom: 10px;
+}
+
+#resultado-filtro {
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+/* ========================================
+   10. IMÁGENES Y MULTIMEDIA
+======================================== */
+
 figure {
     margin: 0;
 }
 
 figure img {
+    display: block;
     max-width: 100%;
     border-radius: 10px;
     box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
@@ -231,9 +351,14 @@ figcaption {
 
 audio,
 video {
+    display: block;
     max-width: 100%;
     margin-top: 10px;
 }
+
+/* ========================================
+   11. CONTENIDO COMPLEMENTARIO
+======================================== */
 
 aside {
     border-left: 5px solid var(--color-rosa);
@@ -242,21 +367,27 @@ aside {
 summary {
     cursor: pointer;
     color: var(--color-principal);
-    font-weight: bold;
+    font-weight: 700;
 }
+
+/* ========================================
+   12. FORMULARIO DE CONTACTO
+======================================== */
 
 form {
     max-width: 600px;
+    width: 100%;
 }
 
 fieldset {
+    min-width: 0;
     border: 2px solid var(--color-claro);
     border-radius: 10px;
     padding: 20px;
 }
 
 legend {
-    font-weight: bold;
+    font-weight: 700;
     color: var(--color-principal);
     padding: 0 8px;
 }
@@ -268,42 +399,129 @@ label {
 input,
 textarea,
 select {
+    display: block;
     width: 100%;
     padding: 10px;
     margin-top: 5px;
+    margin-bottom: 15px;
     border: 1px solid var(--color-claro);
     border-radius: 6px;
-    font-family: 'Montserrat', Arial, sans-serif;
+    font-family: var(--font-family-base);
     background-color: var(--color-blanco);
     color: var(--color-texto);
+}
+
+textarea {
+    resize: vertical;
 }
 
 input:focus,
 textarea:focus,
 select:focus {
     outline: 2px solid var(--color-principal);
+    outline-offset: 1px;
     border-color: var(--color-principal);
 }
 
-input[type="checkbox"] {
+input[type="checkbox"],
+input[type="radio"] {
+    display: inline-block;
     width: auto;
+    margin-right: 8px;
 }
+
+[aria-invalid="true"] {
+    outline: 2px solid #B00020;
+    border-color: #B00020;
+}
+
+.mensaje-error {
+    color: #B85062;
+    font-weight: 600;
+}
+
+.mensaje-exito {
+    color: #4A3E56;
+    font-weight: 600;
+}
+
+/* ========================================
+   13. BOTONES
+======================================== */
 
 button {
     background-color: var(--color-principal);
     color: var(--color-blanco);
     border: none;
     padding: 11px 18px;
-    margin-right: 10px;
+    margin: 0 10px 10px 0;
     border-radius: 6px;
-    font-family: 'Montserrat', Arial, sans-serif;
+    font-family: var(--font-family-base);
     font-weight: 600;
     cursor: pointer;
+    transition: background-color 0.2s ease;
 }
 
 button:hover {
     background-color: var(--color-azul);
 }
+
+button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* ========================================
+   14. REPOSITORIOS DE GITHUB
+======================================== */
+
+#estado-github {
+    overflow-wrap: anywhere;
+}
+
+#estado-github[data-estado="error"] {
+    color: #B00020;
+}
+
+#estado-github[data-estado="success"] {
+    font-weight: 600;
+}
+
+#lista-repositorios a {
+    color: var(--color-principal);
+    font-weight: 600;
+}
+
+#lista-repositorios a:hover {
+    color: var(--color-rosa);
+}
+
+/* ========================================
+   15. VENTANA DE INFORMACIÓN
+======================================== */
+
+dialog {
+    border: none;
+    border-radius: 15px;
+    padding: 30px;
+    width: calc(100% - 32px);
+    max-width: 450px;
+    color: var(--color-texto);
+    background-color: var(--color-blanco);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+}
+
+dialog::backdrop {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+dialog h3 {
+    margin-top: 0;
+}
+
+/* ========================================
+   16. PIE DE PÁGINA
+======================================== */
 
 footer {
     background-color: var(--color-principal);
@@ -312,64 +530,13 @@ footer {
     padding: 25px;
 }
 
-@media (max-width: 700px) {
-
-    header {
-        padding: 30px 15px;
-    }
-
-    header img {
-        width: 130px;
-        height: 130px;
-    }
-
-    header h1 {
-        font-size: 1.8rem;
-    }
-
-    nav a {
-        display: block;
-        margin: 8px;
-    }
-
-    main {
-        padding: 15px;
-    }
-
-    section,
-    aside {
-        padding: 18px;
-    }
-
-    #experiencia {
-        flex-direction: column;
-    }
-
-    #experiencia article {
-        min-width: 100%;
-    }
-
-    #habilidades {
-        grid-template-columns: 1fr;
-    }
-
-    meter {
-        display: block;
-        margin-left: 0;
-        margin-top: 5px;
-    }
-
-    th,
-    td {
-        padding: 8px;
-        font-size: 0.85rem;
-    }
-
-    button {
-        margin-bottom: 10px;
-    }
-
+footer a {
+    color: inherit;
 }
+
+/* ========================================
+   17. MODO OSCURO
+======================================== */
 
 body.modo_oscuro {
     --color-fondo: #1C1720;
@@ -398,6 +565,11 @@ body.modo_oscuro h3 {
     color: var(--color-rosa);
 }
 
+body.modo_oscuro strong,
+body.modo_oscuro summary {
+    color: var(--color-turquesa);
+}
+
 body.modo_oscuro header,
 body.modo_oscuro header h1,
 body.modo_oscuro header p,
@@ -410,91 +582,61 @@ body.modo_oscuro header a {
     text-decoration: underline;
 }
 
-.mensaje-error {
-    color: #B85062;
-    font-weight: 600;
+body.modo_oscuro #experiencia article,
+body.modo_oscuro #proyectos article {
+    background-color: var(--color-claro);
+    color: var(--color-texto);
 }
 
-.mensaje-exito {
-    color: #4A3E56;
-    font-weight: 600;
+body.modo_oscuro input,
+body.modo_oscuro textarea,
+body.modo_oscuro select {
+    background-color: #322438;
+    color: var(--color-texto);
+    border-color: #6B2D46;
 }
 
-dialog {
-    border: none;
-    border-radius: 15px;
-    padding: 30px;
-    max-width: 450px;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+body.modo_oscuro input::placeholder,
+body.modo_oscuro textarea::placeholder {
+    color: #E3C7D2;
 }
 
-dialog::backdrop {
-    background-color: rgba(0, 0, 0, 0.5);
+body.modo_oscuro th {
+    background-color: #6B2D46;
 }
 
-dialog h3 {
-    margin-top: 0;
+body.modo_oscuro td {
+    border-color: #6B2D46;
 }
 
-
-/* Tokens de diseño requeridos */
-:root {
-    --font-family-base: 'Montserrat', Arial, sans-serif;
-    --spacing-unit: 1rem;
+body.modo_oscuro tbody tr:hover {
+    background-color: #322438;
 }
 
-/* Reset universal */
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+body.modo_oscuro #lista-repositorios a {
+    color: var(--color-turquesa);
 }
 
-body {
-    font-family: var(--font-family-base);
+body.modo_oscuro .mensaje-error {
+    color: #FF9EAD;
 }
 
-section, aside {
-    margin-bottom: var(--spacing-unit);
+body.modo_oscuro .mensaje-exito {
+    color: #ED8B9E;
 }
 
-/* El menú aparece como hamburguesa hasta escritorio */
-#menu-btn {
-    display: block;
-    margin: 0 auto;
+body.modo_oscuro dialog {
+    background-color: var(--color-blanco);
+    color: var(--color-texto);
 }
 
-#menu-principal {
-    display: none;
-}
+/* ========================================
+   18. TABLETAS
+======================================== */
 
-#menu-principal.menu-abierto {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-}
-
-#proyectos article[hidden] {
-    display: none !important;
-}
-
-[aria-invalid="true"] {
-    outline: 2px solid #b00020;
-    border-color: #b00020;
-}
-
-#estado-github[data-estado="error"] {
-    color: #b00020;
-}
-
-#estado-github[data-estado="success"] {
-    font-weight: 600;
-}
-
-/* Tablet: 768px a 1024px */
 @media (min-width: 768px) {
     main {
-        padding: 2rem;
+        padding: 30px;
     }
 
     #menu-principal.menu-abierto {
@@ -508,7 +650,10 @@ section, aside {
     }
 }
 
-/* Escritorio: más de 1024px */
+/* ========================================
+   19. ESCRITORIO
+======================================== */
+
 @media (min-width: 1025px) {
     #menu-btn {
         display: none;
@@ -518,12 +663,102 @@ section, aside {
     #menu-principal.menu-abierto {
         display: flex;
         flex-direction: row;
-        justify-content: center;
         flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        margin-top: 0;
     }
 
     main {
         max-width: 1100px;
         margin-inline: auto;
+    }
+}
+
+/* ========================================
+   20. CELULARES
+======================================== */
+
+@media (max-width: 700px) {
+    header {
+        padding: 30px 15px;
+    }
+
+    header img {
+        width: 130px;
+        height: 130px;
+    }
+
+    header h1 {
+        font-size: 1.8rem;
+    }
+
+    main {
+        padding: 15px;
+    }
+
+    section,
+    aside {
+        padding: 18px;
+    }
+
+    #experiencia {
+        flex-direction: column;
+    }
+
+    #experiencia article {
+        flex: 1 1 auto;
+        width: 100%;
+        min-width: 0;
+    }
+
+    #habilidades {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    #habilidades h2 {
+        grid-column: auto;
+    }
+
+    meter {
+        display: block;
+        margin-left: 0;
+        margin-top: 5px;
+    }
+
+    /* Permite desplazar tablas anchas */
+    table {
+        font-size: 0.85rem;
+    }
+
+    th,
+    td {
+        padding: 8px;
+    }
+
+    fieldset {
+        padding: 12px;
+    }
+
+    dialog {
+        padding: 20px;
+    }
+}
+
+/* ========================================
+   21. ACCESIBILIDAD: MENOS MOVIMIENTO
+======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
     }
 }
