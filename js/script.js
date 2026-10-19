@@ -1,9 +1,9 @@
 
 "use strict";
 
-// ========================================
-// 1. MODO CLARO / OSCURO PERSISTENTE
-// ========================================
+/* =========================
+   1. MODO CLARO Y OSCURO
+========================= */
 
 const botonModo = document.getElementById("modo_btn");
 const CLAVE_TEMA = "preferencia-tema";
@@ -11,23 +11,26 @@ const CLAVE_TEMA = "preferencia-tema";
 function actualizarBotonTema() {
     if (!botonModo) return;
 
-    const oscuro = document.body.classList.contains("modo_oscuro");
+    const modoOscuro = document.body.classList.contains("modo_oscuro");
 
-    botonModo.textContent = oscuro
+    botonModo.textContent = modoOscuro
         ? "☀️ Modo claro"
         : "🌙 Modo oscuro";
 
-    botonModo.setAttribute("aria-pressed", String(oscuro));
+    botonModo.setAttribute("aria-pressed", String(modoOscuro));
 }
 
 try {
     const temaGuardado = localStorage.getItem(CLAVE_TEMA);
+    const preferencias = temaGuardado
+        ? JSON.parse(temaGuardado)
+        : {};
 
-    if (temaGuardado === "oscuro") {
+    if (preferencias.tema === "oscuro") {
         document.body.classList.add("modo_oscuro");
     }
 } catch (error) {
-    console.warn("No se pudo recuperar el tema:", error);
+    console.warn("No se pudo recuperar el tema guardado:", error);
 }
 
 actualizarBotonTema();
@@ -36,12 +39,17 @@ if (botonModo) {
     botonModo.addEventListener("click", () => {
         document.body.classList.toggle("modo_oscuro");
 
-        const tema = document.body.classList.contains("modo_oscuro")
-            ? "oscuro"
-            : "claro";
+        const preferencias = {
+            tema: document.body.classList.contains("modo_oscuro")
+                ? "oscuro"
+                : "claro"
+        };
 
         try {
-            localStorage.setItem(CLAVE_TEMA, tema);
+            localStorage.setItem(
+                CLAVE_TEMA,
+                JSON.stringify(preferencias)
+            );
         } catch (error) {
             console.warn("No se pudo guardar el tema:", error);
         }
@@ -50,177 +58,129 @@ if (botonModo) {
     });
 }
 
-
-// ========================================
-// 2. MENÚ HAMBURGUESA
-// ========================================
+/* =========================
+   2. MENÚ RESPONSIVE
+========================= */
 
 const botonMenu = document.getElementById("menu-btn");
-const menu = document.getElementById("menu-principal");
+const menuPrincipal = document.getElementById("menu-principal");
 
-if (botonMenu && menu) {
+function cerrarMenu() {
+    if (!botonMenu || !menuPrincipal) return;
+
+    menuPrincipal.classList.remove("menu-abierto");
+    botonMenu.setAttribute("aria-expanded", "false");
+    botonMenu.setAttribute("aria-label", "Abrir menú");
+}
+
+if (botonMenu && menuPrincipal) {
     botonMenu.addEventListener("click", () => {
-        const abierto =
-            botonMenu.getAttribute("aria-expanded") === "true";
+        const estaAbierto = menuPrincipal.classList.toggle("menu-abierto");
 
-        const nuevoEstado = !abierto;
-
-        botonMenu.setAttribute(
-            "aria-expanded",
-            String(nuevoEstado)
-        );
-
+        botonMenu.setAttribute("aria-expanded", String(estaAbierto));
         botonMenu.setAttribute(
             "aria-label",
-            nuevoEstado
-                ? "Cerrar menú de navegación"
-                : "Abrir menú de navegación"
+            estaAbierto ? "Cerrar menú" : "Abrir menú"
         );
-
-        menu.classList.toggle("menu-abierto", nuevoEstado);
     });
 
-    menu.querySelectorAll("a").forEach((enlace) => {
-        enlace.addEventListener("click", () => {
-            menu.classList.remove("menu-abierto");
+    menuPrincipal.querySelectorAll("a").forEach((enlace) => {
+        enlace.addEventListener("click", cerrarMenu);
+    });
 
-            botonMenu.setAttribute("aria-expanded", "false");
-            botonMenu.setAttribute(
-                "aria-label",
-                "Abrir menú de navegación"
-            );
-        });
+    document.addEventListener("keydown", (evento) => {
+        if (evento.key === "Escape") {
+            cerrarMenu();
+        }
     });
 }
 
+/* =========================
+   3. FILTRO DE EXPERIENCIA
+========================= */
 
-// ========================================
-// 3. FILTRO DE PROYECTOS
-// ========================================
-
-/* ================================
-   FILTRO DE EXPERIENCIA
-================================ */
-
-const filtroProyectos = document.getElementById("filtro-proyectos");
+const filtroExperiencia = document.getElementById("filtro-proyectos");
 const resultadoFiltro = document.getElementById("resultado-filtro");
+const seccionExperiencia = document.getElementById("experiencia");
 
-// Guardamos las tarjetas originales sin modificar su contenido.
-const tarjetasExperiencia = Array.from(
-    document.querySelectorAll("#experiencia article")
-).map((tarjeta) => ({
-    elemento: tarjeta,
-    texto: tarjeta.textContent.toLocaleLowerCase("es")
-}));
+if (filtroExperiencia && resultadoFiltro && seccionExperiencia) {
+    const tarjetasExperiencia = Array.from(
+        seccionExperiencia.querySelectorAll("article")
+    );
 
-if (filtroProyectos && resultadoFiltro) {
-    filtroProyectos.addEventListener("input", () => {
-        const busqueda = filtroProyectos.value
+    function filtrarExperiencia() {
+        const busqueda = filtroExperiencia.value
             .trim()
             .toLocaleLowerCase("es");
 
-        // Filtra las tarjetas que coinciden con el texto.
-        const coincidencias = tarjetasExperiencia.filter((tarjeta) =>
-            tarjeta.texto.includes(busqueda)
-        );
-
-        // Creamos un conjunto con las tarjetas encontradas.
-        const tarjetasVisibles = new Set(
-            coincidencias.map((tarjeta) => tarjeta.elemento)
-        );
-
-        // Mostramos las coincidencias y ocultamos las demás.
-        tarjetasExperiencia.map((tarjeta) => {
-            tarjeta.elemento.hidden = !tarjetasVisibles.has(
-                tarjeta.elemento
-            );
+        const tarjetasCoincidentes = tarjetasExperiencia.filter((tarjeta) => {
+            const contenido = tarjeta.textContent.toLocaleLowerCase("es");
+            return contenido.includes(busqueda);
         });
 
-        // Actualizamos el mensaje para el usuario.
-        if (busqueda === "") {
+        tarjetasExperiencia.forEach((tarjeta) => {
+            tarjeta.hidden = !tarjetasCoincidentes.includes(tarjeta);
+        });
+
+        const cantidad = tarjetasCoincidentes.length;
+
+        if (cantidad === 0) {
             resultadoFiltro.textContent =
-                `Se muestran todas las tarjetas: ${tarjetasExperiencia.length}.`;
-        } else if (coincidencias.length === 0) {
-            resultadoFiltro.textContent =
-                "No se encontraron coincidencias.";
+                "No se encontraron resultados. Prueba con otra palabra.";
         } else {
             resultadoFiltro.textContent =
-                `Se encontraron ${coincidencias.length} resultado(s).`;
+                `${cantidad} ${cantidad === 1 ? "resultado encontrado" : "resultados encontrados"}.`;
         }
-    });
+    }
+
+    filtroExperiencia.addEventListener("input", filtrarExperiencia);
 }
 
-// ========================================
-// 4. FORMULARIO DE CONTACTO
-// ========================================
+/* =========================
+   4. VALIDACIÓN DEL FORMULARIO
+========================= */
 
-const formulario = document.getElementById("formulario_contacto");
+const formularioContacto = document.getElementById("formulario_contacto");
 const mensajeFormulario = document.getElementById("mensaje_formulario");
 
-if (formulario && mensajeFormulario) {
-    formulario
-        .querySelectorAll("input, textarea, select")
-        .forEach((campo) => {
-            campo.addEventListener("input", () => {
-                campo.setCustomValidity("");
-
-                if (campo.checkValidity()) {
-                    campo.removeAttribute("aria-invalid");
-                } else {
-                    campo.setAttribute("aria-invalid", "true");
-                }
-
-                mensajeFormulario.textContent = "";
-                mensajeFormulario.className = "";
-            });
-
-            campo.addEventListener("change", () => {
-                campo.setCustomValidity("");
-
-                if (campo.checkValidity()) {
-                    campo.removeAttribute("aria-invalid");
-                } else {
-                    campo.setAttribute("aria-invalid", "true");
-                }
-            });
-        });
-
-    formulario.addEventListener("submit", (evento) => {
+if (formularioContacto && mensajeFormulario) {
+    formularioContacto.addEventListener("submit", (evento) => {
         evento.preventDefault();
 
-        if (!formulario.checkValidity()) {
-            mensajeFormulario.textContent =
-                "Revisa los campos: hay datos incompletos o inválidos.";
+        if (!formularioContacto.checkValidity()) {
+            formularioContacto.reportValidity();
 
+            mensajeFormulario.textContent =
+                "Revisa los campos obligatorios antes de continuar.";
             mensajeFormulario.className = "mensaje-error";
-            formulario.reportValidity();
             return;
         }
 
-        // Demostración académica: no envía datos a un servidor.
         mensajeFormulario.textContent =
-            "¡Validación exitosa! Este formulario de demostración no envía mensajes.";
-
+            "¡Formulario validado correctamente! Esta demostración no envía mensajes a un servidor.";
         mensajeFormulario.className = "mensaje-exito";
 
-        formulario.reset();
+        formularioContacto.reset();
+    });
 
-        formulario
-            .querySelectorAll("[aria-invalid]")
-            .forEach((campo) => {
-                campo.removeAttribute("aria-invalid");
-            });
+    formularioContacto.querySelectorAll("input, textarea, select").forEach((campo) => {
+        campo.addEventListener("input", () => {
+            mensajeFormulario.textContent = "";
+            mensajeFormulario.className = "";
+        });
+
+        campo.addEventListener("change", () => {
+            mensajeFormulario.textContent = "";
+            mensajeFormulario.className = "";
+        });
     });
 }
 
+/* =========================
+   5. MODAL DE DISPONIBILIDAD
+========================= */
 
-// ========================================
-// 5. DIÁLOGO DE DISPONIBILIDAD
-// ========================================
-
-const botonDisponibilidad =
-    document.getElementById("btn-disponibilidad");
-
+const botonDisponibilidad = document.getElementById("btn-disponibilidad");
 const modalInfo = document.getElementById("modal-info");
 
 if (botonDisponibilidad && modalInfo) {
@@ -229,36 +189,38 @@ if (botonDisponibilidad && modalInfo) {
             modalInfo.showModal();
         }
     });
+
+    // Permite cerrar el diálogo haciendo clic fuera de su contenido.
+    modalInfo.addEventListener("click", (evento) => {
+        if (evento.target === modalInfo) {
+            modalInfo.close();
+        }
+    });
 }
 
-
-// ========================================
-// 6. REPOSITORIOS PÚBLICOS DE GITHUB
-// ========================================
+/* =========================
+   6. REPOSITORIOS DE GITHUB
+========================= */
 
 const usuarioGitHub = "luciana-saavedra";
 
 const estadoGitHub = document.getElementById("estado-github");
 const listaRepositorios = document.getElementById("lista-repositorios");
-const botonReintentar = document.getElementById("reintentar-github");
+const botonReintentarGitHub = document.getElementById("reintentar-github");
 
 async function cargarRepositorios() {
     if (!estadoGitHub || !listaRepositorios) return;
 
     estadoGitHub.textContent = "Cargando repositorios...";
-    estadoGitHub.dataset.estado = "loading";
-
     listaRepositorios.replaceChildren();
 
-    if (botonReintentar) {
-        botonReintentar.disabled = true;
+    if (botonReintentarGitHub) {
+        botonReintentarGitHub.disabled = true;
     }
 
-    try {
-        // URL correcta de la API de GitHub.
-        const url =
-            `https://api.github.com/users/${usuarioGitHub}/repos?sort=updated&per_page=10`;
+    const url = `https://api.github.com/users/${usuarioGitHub}/repos?sort=updated&per_page=10`;
 
+    try {
         const respuesta = await fetch(url);
 
         if (!respuesta.ok) {
@@ -270,70 +232,86 @@ async function cargarRepositorios() {
 
             if (respuesta.status === 403) {
                 throw new Error(
-                    "GitHub limitó temporalmente las consultas."
+                    "GitHub limitó temporalmente las solicitudes. Intenta más tarde."
                 );
             }
 
-            throw new Error(`Error HTTP: ${respuesta.status}`);
+            throw new Error(
+                `No se pudieron cargar los repositorios (error ${respuesta.status}).`
+            );
         }
 
         const repositorios = await respuesta.json();
 
-        // Mostrar repositorios propios, excluyendo los forks.
+        if (!Array.isArray(repositorios)) {
+            throw new Error("GitHub devolvió una respuesta inesperada.");
+        }
+
         const repositoriosPropios = repositorios.filter(
-            (repo) => !repo.fork
+            (repositorio) => !repositorio.fork
         );
 
-        if (repositoriosPropios.length === 0) {
-            estadoGitHub.textContent =
-                "No se encontraron repositorios propios en esta consulta.";
+        const repositoriosActualizados = repositoriosPropios.map(
+            (repositorio) => ({
+                nombre: repositorio.name,
+                descripcion: repositorio.description || "Sin descripción disponible.",
+                enlace: repositorio.html_url,
+                lenguaje: repositorio.language || "No especificado"
+            })
+        );
 
-            estadoGitHub.dataset.estado = "success";
+        if (repositoriosActualizados.length === 0) {
+            estadoGitHub.textContent =
+                "No se encontraron repositorios propios para mostrar.";
             return;
         }
 
-        repositoriosPropios.forEach((repo) => {
-            const elemento = document.createElement("li");
-            const enlace = document.createElement("a");
+        const fragmento = document.createDocumentFragment();
 
-            enlace.href = repo.html_url;
+        repositoriosActualizados.forEach((repositorio) => {
+            const tarjeta = document.createElement("li");
+
+            const enlace = document.createElement("a");
+            enlace.href = repositorio.enlace;
             enlace.target = "_blank";
             enlace.rel = "noopener noreferrer";
-            enlace.textContent = repo.name;
+            enlace.textContent = repositorio.nombre;
 
-            elemento.appendChild(enlace);
+            const descripcion = document.createElement("p");
+            descripcion.textContent = repositorio.descripcion;
 
-            if (repo.description) {
-                elemento.appendChild(
-                    document.createTextNode(` — ${repo.description}`)
-                );
-            }
+            const lenguaje = document.createElement("p");
+            lenguaje.textContent = `Lenguaje: ${repositorio.lenguaje}`;
 
-            listaRepositorios.appendChild(elemento);
+            tarjeta.append(enlace, descripcion, lenguaje);
+            fragmento.appendChild(tarjeta);
         });
 
+        listaRepositorios.appendChild(fragmento);
+
         estadoGitHub.textContent =
-            "Repositorios cargados correctamente.";
-
-        estadoGitHub.dataset.estado = "success";
-
+            `Se cargaron ${repositoriosActualizados.length} repositorios.`;
     } catch (error) {
-        console.error("Error al cargar GitHub:", error);
+        console.error("Error al cargar repositorios:", error);
 
         estadoGitHub.textContent =
-            `No se pudieron cargar los repositorios: ${error.message}`;
-
-        estadoGitHub.dataset.estado = "error";
-
+            error instanceof TypeError
+                ? "No se pudo conectar con GitHub. Revisa tu conexión e inténtalo de nuevo."
+                : error.message;
     } finally {
-        if (botonReintentar) {
-            botonReintentar.disabled = false;
+        if (botonReintentarGitHub) {
+            botonReintentarGitHub.disabled = false;
         }
     }
 }
 
-if (botonReintentar) {
-    botonReintentar.addEventListener("click", cargarRepositorios);
-}
+if (estadoGitHub && listaRepositorios) {
+    cargarRepositorios();
 
-cargarRepositorios();
+    if (botonReintentarGitHub) {
+        botonReintentarGitHub.addEventListener(
+            "click",
+            cargarRepositorios
+        );
+    }
+}
